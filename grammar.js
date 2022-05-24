@@ -15,7 +15,16 @@ const fn_pu = ($, type) =>
     type,
     optional($.parameter_list),
     choice(field("return", seq("->", $._type), optional("do")), "do"),
-    field("body", $._fn_body)
+    field("body", repeat(seq($._statement, terminator))),
+    "end"
+  );
+
+const blob_externblob = ($, normal) =>
+  seq(
+    normal ? "blob" : "externblob",
+    "{",
+    optional(repeat_separator(seq($.identifier, $._type), ",")),
+    "}"
   );
 
 const declaration = ($, mutable) =>
@@ -30,11 +39,13 @@ const declaration = ($, mutable) =>
 const repeat_separator = (elem, separator) =>
   seq(repeat(seq(elem, separator)), elem);
 
+const terminator = "\n";
+
 module.exports = grammar({
   name: "sylt",
 
   rules: {
-    source_file: $ => repeat($._outer_statement),
+    source_file: $ => repeat(seq($._statement, terminator)),
 
     // Primitive stuff
 
@@ -67,7 +78,6 @@ module.exports = grammar({
     // Functions
     t_fn: $ => t_fn_pu($, "fn"),
     t_pu: $ => t_fn_pu($, "pu"),
-    _fn_body: $ => seq(seq($._inner_statement), "end"),
     fn: $ => fn_pu($, "fn"),
     pu: $ => fn_pu($, "pu"),
 
@@ -80,14 +90,14 @@ module.exports = grammar({
     parameter_list: $ => seq(repeat(choice($.parameter, ",")), $.parameter),
 
     // The general type
-    _type: $ => choice($._t_primitive, $.t_fn, $.t_pu),
+    _type: $ => choice($._t_primitive, $.t_fn, $.t_pu, $.identifier),
 
     // Statements
-    _inner_statement: $ => choice($._declaration, $._expression),
-    _outer_statement: $ => $._inner_statement,
+    _statement: $ => choice($._declaration, $._expression),
 
     // Tuple or parameters for a function call
-    _tup_params: $ => seq("(", optional(repeat_separator($._expression, ",")), ")"),
+    _tup_params: $ =>
+      seq("(", optional(repeat_separator($._expression, ",")), ")"),
 
     // Function calls
     fn_call: $ =>
@@ -111,6 +121,10 @@ module.exports = grammar({
 
     // Tuple
     tuple: $ => $._tup_params,
+
+    // Blob
+    t_blob: $ => field("name", $.identifier),
+    blob: $ => blob_externblob($, false),
 
     // Operators
     add: $ => prec.left(seq($._expression, "+", $._expression)),
