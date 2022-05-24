@@ -220,7 +220,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "fn"
+          "name": "_expression"
         }
       ]
     },
@@ -501,9 +501,81 @@
         }
       ]
     },
+    "_tup_params": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "fn_call": {
+      "type": "PREC",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "function",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_tup_params"
+          }
+        ]
+      }
+    },
+    "arrow_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "param1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "fn_call"
+        }
+      ]
+    },
+    "tup": {
+      "type": "SYMBOL",
+      "name": "_tup_params"
+    },
     "_expression": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
         {
           "type": "SYMBOL",
           "name": "int"
@@ -531,6 +603,18 @@
         {
           "type": "SYMBOL",
           "name": "pu"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "fn_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "arrow_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tup"
         }
       ]
     }

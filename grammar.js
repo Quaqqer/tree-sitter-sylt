@@ -43,7 +43,7 @@ module.exports = grammar({
     _type: $ => choice($._type_primitive, $.t_fn, $.t_pu),
 
     // Statements
-    _inner_statement: $ => choice($._declaration, $.fn),
+    _inner_statement: $ => choice($._declaration, $._expression),
     _outer_statement: $ => $._inner_statement,
 
     // Declarations
@@ -73,6 +73,7 @@ module.exports = grammar({
     bool: $ => choice("true", "false"),
     str: $ => /"[^"]*"/,
 
+    // Function
     _fn_body: $ => seq(seq($._inner_statement), "end"),
     fn: $ =>
       seq(
@@ -89,7 +90,31 @@ module.exports = grammar({
         field("body", $._fn_body)
       ),
 
+    // Tuple or parameters for a function call
+    _tup_params: $ => seq("(", seq($._expression), ")"),
+
+    // Function calls
+    fn_call: $ => prec(2, seq(field("function", $.identifier), $._tup_params)),
+
+    arrow_call: $ => seq(field("param1", $._expression), "->", $.fn_call),
+
+    // Tuple
+    tup: $ => $._tup_params,
+
     // An expression
-    _expression: $ => choice($.int, $.float, $.nil, $.bool, $.str, $.fn, $.pu),
+    _expression: $ =>
+      choice(
+        $.identifier,
+        $.int,
+        $.float,
+        $.nil,
+        $.bool,
+        $.str,
+        $.fn,
+        $.pu,
+        $.fn_call,
+        $.arrow_call,
+        $.tup
+      ),
   },
 });

@@ -1,0 +1,14 @@
+===================
+Function arrow call
+===================
+
+x -> a(1, "hej")
+
+---
+
+(source_file
+(arrow_call param1: (identifier)
+(fn_call function: (identifier)
+)
+)
+)
