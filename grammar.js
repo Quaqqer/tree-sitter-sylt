@@ -42,8 +42,9 @@ module.exports = grammar({
     // The general type
     _type: $ => choice($._type_primitive, $.t_fn, $.t_pu),
 
-    // An outer statement
-    _outer_statement: $ => choice($._declaration),
+    // Statements
+    _inner_statement: $ => choice($._declaration, $.fn),
+    _outer_statement: $ => $._inner_statement,
 
     // Declarations
     _declaration: $ => choice($.mut_declaration, $.const_declaration),
@@ -64,6 +65,7 @@ module.exports = grammar({
         field("expression", $._expression)
       ),
 
+    // Primitive values
     int: $ => /\d+/,
     //           X._     | _.Y    | XeY
     float: $ => choice(/\d+\.\d*/, /\d*\.\d+/, /\d+e(-|\+)?\d+/),
@@ -71,6 +73,23 @@ module.exports = grammar({
     bool: $ => choice("true", "false"),
     str: $ => /"[^"]*"/,
 
-    _expression: $ => choice($.int, $.float, $.nil, $.bool, $.str),
+    _fn_body: $ => seq(seq($._inner_statement), "end"),
+    fn: $ =>
+      seq(
+        "fn",
+        optional($.parameters),
+        choice(field("return", seq("->", $._type), optional("do")), "do"),
+        field("body", $._fn_body)
+      ),
+    pu: $ =>
+      seq(
+        "pu",
+        optional($.parameters),
+        choice(field("return", seq("->", $._type), optional("do")), "do"),
+        field("body", $._fn_body)
+      ),
+
+    // An expression
+    _expression: $ => choice($.int, $.float, $.nil, $.bool, $.str, $.fn, $.pu),
   },
 });

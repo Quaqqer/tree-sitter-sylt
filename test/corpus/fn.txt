@@ -1,0 +1,15 @@
+====================
+Function declaration
+====================
+
+a :: fn do
+  b :: 2
+end
+
+---
+
+(source_file
+  (const_declaration
+    name: (identifier)
+    expression: (fn
+      body: (const_declaration name: (identifier) expression: (int)))))

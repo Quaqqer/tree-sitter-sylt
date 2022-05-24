@@ -21,11 +21,19 @@
             "named": true
           },
           {
+            "type": "fn",
+            "named": true
+          },
+          {
             "type": "int",
             "named": true
           },
           {
             "type": "nil",
+            "named": true
+          },
+          {
+            "type": "pu",
             "named": true
           },
           {
@@ -86,6 +94,82 @@
     "fields": {}
   },
   {
+    "type": "fn",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "const_declaration",
+            "named": true
+          },
+          {
+            "type": "end",
+            "named": false
+          },
+          {
+            "type": "fn",
+            "named": true
+          },
+          {
+            "type": "mut_declaration",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "->",
+            "named": false
+          },
+          {
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "parameters",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "mut_declaration",
     "named": true,
     "fields": {
@@ -102,11 +186,19 @@
             "named": true
           },
           {
+            "type": "fn",
+            "named": true
+          },
+          {
             "type": "int",
             "named": true
           },
           {
             "type": "nil",
+            "named": true
+          },
+          {
+            "type": "pu",
             "named": true
           },
           {
@@ -231,6 +323,82 @@
     }
   },
   {
+    "type": "pu",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "const_declaration",
+            "named": true
+          },
+          {
+            "type": "end",
+            "named": false
+          },
+          {
+            "type": "fn",
+            "named": true
+          },
+          {
+            "type": "mut_declaration",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "->",
+            "named": false
+          },
+          {
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "parameters",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -240,6 +408,10 @@
       "types": [
         {
           "type": "const_declaration",
+          "named": true
+        },
+        {
+          "type": "fn",
           "named": true
         },
         {
@@ -363,6 +535,14 @@
   },
   {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "do",
+    "named": false
+  },
+  {
+    "type": "end",
     "named": false
   },
   {
