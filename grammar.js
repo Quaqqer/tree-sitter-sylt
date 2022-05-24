@@ -105,6 +105,22 @@ module.exports = grammar({
     diveq: $ => seq($._expression, "/=", $._expression),
     _opeq: $ => choice($.addeq, $.subeq, $.muleq, $.diveq),
 
+    // If statements
+    if: $ =>
+      seq(
+        "if",
+        $._expression,
+        "do",
+        field("body", repeat(seq($._expression, terminator))),
+        optional(
+          seq(
+            "else",
+            choice($.if, seq("do", repeat(seq($._expression, terminator))))
+          )
+        ),
+        "end"
+      ),
+
     // Tuple or parameters for a function call
     _tup_params: $ =>
       seq("(", optional(repeat_separator($._expression, ",")), ")"),
