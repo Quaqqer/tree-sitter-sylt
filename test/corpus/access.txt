@@ -1,0 +1,9 @@
+========
+Accessor
+========
+
+x.y()
+
+---
+
+(source_file (fn_call function: (access lhs: (identifier) field: (identifier)) params: (parameter_list)))

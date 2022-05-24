@@ -1,3 +1,7 @@
+const PREC = {
+  access: 1,
+};
+
 const t_fn_pu = ($, type) =>
   seq(
     type,
@@ -83,22 +87,36 @@ module.exports = grammar({
     _outer_statement: $ => $._inner_statement,
 
     // Tuple or parameters for a function call
-    _tup_params: $ => seq("(", repeat_separator($._expression, ","), ")"),
+    _tup_params: $ => seq("(", optional(repeat_separator($._expression, ",")), ")"),
 
     // Function calls
     fn_call: $ =>
       prec(
         2,
         seq(
-          field("function", $.identifier),
+          field("function", $._expression),
           field("params", alias($._tup_params, $.parameter_list))
         )
       ),
+    // Special arrow call
+    arrow_call: $ =>
+      prec.left(1, seq(field("param1", $._expression), "->", $.fn_call)),
 
-    arrow_call: $ => seq(field("param1", $._expression), "->", $.fn_call),
+    // Accessor
+    access: $ =>
+      prec(
+        PREC.access,
+        seq(field("lhs", $._expression), ".", field("field", $.identifier))
+      ),
 
     // Tuple
     tuple: $ => $._tup_params,
+
+    // Operators
+    add: $ => prec.left(seq($._expression, "+", $._expression)),
+    sub: $ => prec.left(seq($._expression, "-", $._expression)),
+    mul: $ => prec.left(seq($._expression, "*", $._expression)),
+    div: $ => prec.left(seq($._expression, "/", $._expression)),
 
     // An expression
     _expression: $ =>
@@ -109,7 +127,12 @@ module.exports = grammar({
         $.pu,
         $.fn_call,
         $.arrow_call,
-        $.tuple
+        $.access,
+        $.tuple,
+        $.add,
+        $.sub,
+        $.mul,
+        $.div
       ),
   },
 });
