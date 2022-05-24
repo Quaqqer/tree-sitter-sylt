@@ -1,0 +1,43 @@
+======================
+Primitive declarations
+======================
+
+i :: 1
+i :: 32
+
+f :: 1.
+f :: 1.0
+f :: .1
+f :: 1e2
+f :: 1e+2
+f :: 1e-2
+
+---
+
+(source_file
+  (const_declaration
+    name: (identifier)
+    expression: (int))
+  (const_declaration
+    name: (identifier)
+    expression: (int))
+
+  (const_declaration
+    name: (identifier)
+    expression: (float))
+  (const_declaration
+    name: (identifier)
+    expression: (float))
+  (const_declaration
+    name: (identifier)
+    expression: (float))
+  (const_declaration
+    name: (identifier)
+    expression: (float))
+  (const_declaration
+    name: (identifier)
+    expression: (float))
+  (const_declaration
+    name: (identifier)
+    expression: (float))
+  )

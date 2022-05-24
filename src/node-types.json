@@ -1,6 +1,11 @@
 [
   {
-    "type": "assignment",
+    "type": "bool",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "const_declaration",
     "named": true,
     "fields": {
       "expression": {
@@ -8,18 +13,24 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "bool",
             "named": true
-          }
-        ]
-      },
-      "mutability": {
-        "multiple": false,
-        "required": true,
-        "types": [
+          },
           {
-            "type": ":",
-            "named": false
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "str",
+            "named": true
           }
         ]
       },
@@ -35,50 +46,38 @@
       },
       "type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "type",
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
             "named": true
           }
         ]
       }
-    }
-  },
-  {
-    "type": "bool",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -87,15 +86,145 @@
     "fields": {}
   },
   {
-    "type": "outer_statement",
+    "type": "mut_declaration",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "bool",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "str",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "parameter",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "parameters",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "parameter",
           "named": true
         }
       ]
@@ -110,38 +239,130 @@
       "required": false,
       "types": [
         {
-          "type": "outer_statement",
+          "type": "const_declaration",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
         {
-          "type": "type_primitive",
+          "type": "mut_declaration",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "type_primitive",
+    "type": "t_fn",
     "named": true,
-    "fields": {}
+    "fields": {
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "parameters",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "t_pu",
+    "named": true,
+    "fields": {
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "parameters",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "t_bool",
+            "named": true
+          },
+          {
+            "type": "t_float",
+            "named": true
+          },
+          {
+            "type": "t_fn",
+            "named": true
+          },
+          {
+            "type": "t_int",
+            "named": true
+          },
+          {
+            "type": "t_pu",
+            "named": true
+          },
+          {
+            "type": "t_str",
+            "named": true
+          },
+          {
+            "type": "t_void",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
   },
   {
     "type": ":",
     "named": false
   },
   {
-    "type": "bool",
+    "type": "=",
     "named": false
   },
   {
@@ -149,7 +370,7 @@
     "named": false
   },
   {
-    "type": "float",
+    "type": "fn",
     "named": false
   },
   {
@@ -161,27 +382,39 @@
     "named": true
   },
   {
-    "type": "int",
-    "named": false
-  },
-  {
     "type": "nil",
     "named": true
   },
   {
+    "type": "pu",
+    "named": false
+  },
+  {
     "type": "str",
     "named": true
   },
   {
-    "type": "str",
-    "named": false
+    "type": "t_bool",
+    "named": true
+  },
+  {
+    "type": "t_float",
+    "named": true
+  },
+  {
+    "type": "t_int",
+    "named": true
+  },
+  {
+    "type": "t_str",
+    "named": true
+  },
+  {
+    "type": "t_void",
+    "named": true
   },
   {
     "type": "true",
-    "named": false
-  },
-  {
-    "type": "void",
     "named": false
   }
 ]

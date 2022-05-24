@@ -2,23 +2,66 @@ module.exports = grammar({
   name: "sylt",
 
   rules: {
-    source_file: $ => repeat($.outer_statement),
+    source_file: $ => repeat($._outer_statement),
 
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
 
-    type_primitive: $ => choice("void", "bool", "int", "float", "str"),
+    // Primitive types
+    t_void: $ => "void",
+    t_bool: $ => "bool",
+    t_int: $ => "int",
+    t_float: $ => "float",
+    t_str: $ => "str",
+    _type_primitive: $ =>
+      choice($.t_void, $.t_bool, $.t_int, $.t_float, $.t_str),
 
-    type: $ => choice($.type_primitive),
+    // Parameters of a function
+    parameter: $ =>
+      seq(
+        field("name", $.identifier),
+        field("type", optional(seq(":", $._type)))
+      ),
+    parameters: $ => seq(repeat(choice($.parameter, ",")), $.parameter),
 
-    outer_statement: $ => choice($.assignment),
+    // Function types
+    t_fn: $ =>
+      seq(
+        "fn",
+        field("parameters", optional($.parameters)),
+        "->",
+        field("return", $._type)
+      ),
+    t_pu: $ =>
+      seq(
+        "pu",
+        field("parameters", optional($.parameters)),
+        "->",
+        field("return", $._type)
+      ),
 
-    assignment: $ =>
+    // The general type
+    _type: $ => choice($._type_primitive, $.t_fn, $.t_pu),
+
+    // An outer statement
+    _outer_statement: $ => choice($._declaration),
+
+    // Declarations
+    _declaration: $ => choice($.mut_declaration, $.const_declaration),
+    const_declaration: $ =>
       seq(
         field("name", $.identifier),
         ":",
-        field("type", $.type),
-        field("mutability", ":"),
-        field("expression", $.expression)
+        field("type", optional($._type)),
+        ":",
+        field("expression", $._expression)
+      ),
+    mut_declaration: $ =>
+      seq(
+        field("name", $.identifier),
+        ":",
+        field("type", optional($._type)),
+        "=",
+        field("expression", $._expression)
       ),
 
     int: $ => /\d+/,
@@ -28,6 +71,6 @@ module.exports = grammar({
     bool: $ => choice("true", "false"),
     str: $ => /"[^"]*"/,
 
-    expression: $ => choice($.int, $.float, $.nil, $.bool, $.str),
+    _expression: $ => choice($.int, $.float, $.nil, $.bool, $.str),
   },
 });

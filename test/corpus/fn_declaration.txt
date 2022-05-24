@@ -1,0 +1,18 @@
+====================
+Function declaration
+====================
+
+a : fn x, y: int -> void : 1
+
+---
+
+(source_file
+  (const_declaration
+    name: (identifier)
+    type: (t_fn
+      parameters: (parameters
+        (parameter name: (identifier))
+        (parameter name: (identifier)
+                   type: (t_int)))
+      return: (t_void))
+    expression: (int)))
