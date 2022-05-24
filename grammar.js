@@ -153,10 +153,10 @@ module.exports = grammar({
     blob: $ => blob_externblob($, false),
 
     // Operators
-    add: $ => prec.left(seq($._expression, "+", $._expression)),
-    sub: $ => prec.left(seq($._expression, "-", $._expression)),
-    mul: $ => prec.left(seq($._expression, "*", $._expression)),
-    div: $ => prec.left(seq($._expression, "/", $._expression)),
+    add: $ => prec.left(1, seq($._expression, "+", $._expression)),
+    sub: $ => prec.left(1, seq($._expression, "-", $._expression)),
+    mul: $ => prec.left(2, seq($._expression, "*", $._expression)),
+    div: $ => prec.left(2, seq($._expression, "/", $._expression)),
 
     // An expression
     _expression: $ =>
