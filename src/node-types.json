@@ -161,6 +161,81 @@
     }
   },
   {
+    "type": "addeq",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "div",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "mul",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "sub",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "arrow_call",
     "named": true,
     "fields": {
@@ -241,6 +316,81 @@
       "types": [
         {
           "type": "fn_call",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assign",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "div",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "mul",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "sub",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -451,6 +601,81 @@
     }
   },
   {
+    "type": "diveq",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "div",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "mul",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "sub",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "float",
     "named": true,
     "fields": {}
@@ -476,7 +701,15 @@
             "named": true
           },
           {
+            "type": "addeq",
+            "named": true
+          },
+          {
             "type": "arrow_call",
+            "named": true
+          },
+          {
+            "type": "assign",
             "named": true
           },
           {
@@ -489,6 +722,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "diveq",
             "named": true
           },
           {
@@ -516,6 +753,10 @@
             "named": true
           },
           {
+            "type": "muleq",
+            "named": true
+          },
+          {
             "type": "mut_declaration",
             "named": true
           },
@@ -533,6 +774,10 @@
           },
           {
             "type": "sub",
+            "named": true
+          },
+          {
+            "type": "subeq",
             "named": true
           },
           {
@@ -683,6 +928,81 @@
   },
   {
     "type": "mul",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "div",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "mul",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "sub",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "muleq",
     "named": true,
     "fields": {},
     "children": {
@@ -1038,7 +1358,15 @@
             "named": true
           },
           {
+            "type": "addeq",
+            "named": true
+          },
+          {
             "type": "arrow_call",
+            "named": true
+          },
+          {
+            "type": "assign",
             "named": true
           },
           {
@@ -1051,6 +1379,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "diveq",
             "named": true
           },
           {
@@ -1078,6 +1410,10 @@
             "named": true
           },
           {
+            "type": "muleq",
+            "named": true
+          },
+          {
             "type": "mut_declaration",
             "named": true
           },
@@ -1095,6 +1431,10 @@
           },
           {
             "type": "sub",
+            "named": true
+          },
+          {
+            "type": "subeq",
             "named": true
           },
           {
@@ -1174,7 +1514,15 @@
           "named": true
         },
         {
+          "type": "addeq",
+          "named": true
+        },
+        {
           "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "assign",
           "named": true
         },
         {
@@ -1183,6 +1531,97 @@
         },
         {
           "type": "const_declaration",
+          "named": true
+        },
+        {
+          "type": "div",
+          "named": true
+        },
+        {
+          "type": "diveq",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "mul",
+          "named": true
+        },
+        {
+          "type": "muleq",
+          "named": true
+        },
+        {
+          "type": "mut_declaration",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "sub",
+          "named": true
+        },
+        {
+          "type": "subeq",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sub",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "bool",
           "named": true
         },
         {
@@ -1214,10 +1653,6 @@
           "named": true
         },
         {
-          "type": "mut_declaration",
-          "named": true
-        },
-        {
           "type": "nil",
           "named": true
         },
@@ -1241,7 +1676,7 @@
     }
   },
   {
-    "type": "sub",
+    "type": "subeq",
     "named": true,
     "fields": {},
     "children": {
@@ -1515,7 +1950,15 @@
     "named": false
   },
   {
+    "type": "*=",
+    "named": false
+  },
+  {
     "type": "+",
+    "named": false
+  },
+  {
+    "type": "+=",
     "named": false
   },
   {
@@ -1524,6 +1967,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "-=",
     "named": false
   },
   {
@@ -1536,6 +1983,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "/=",
     "named": false
   },
   {

@@ -93,7 +93,17 @@ module.exports = grammar({
     _type: $ => choice($._t_primitive, $.t_fn, $.t_pu, $.identifier),
 
     // Statements
-    _statement: $ => choice($._declaration, $._expression),
+    _statement: $ => choice($._declaration, $._expression, $.assign, $._opeq),
+
+    // Assignments
+    assign: $ => seq($._expression, "=", $._expression),
+
+    // Operator equals
+    addeq: $ => seq($._expression, "+=", $._expression),
+    subeq: $ => seq($._expression, "-=", $._expression),
+    muleq: $ => seq($._expression, "*=", $._expression),
+    diveq: $ => seq($._expression, "/=", $._expression),
+    _opeq: $ => choice($.addeq, $.subeq, $.muleq, $.diveq),
 
     // Tuple or parameters for a function call
     _tup_params: $ =>
