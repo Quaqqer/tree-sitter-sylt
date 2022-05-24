@@ -48,7 +48,7 @@
             "named": true
           },
           {
-            "type": "tup",
+            "type": "tuple",
             "named": true
           }
         ]
@@ -119,7 +119,7 @@
             "named": true
           },
           {
-            "type": "tup",
+            "type": "tuple",
             "named": true
           }
         ]
@@ -236,7 +236,7 @@
             "named": true
           },
           {
-            "type": "tup",
+            "type": "tuple",
             "named": true
           }
         ]
@@ -285,7 +285,7 @@
       "required": false,
       "types": [
         {
-          "type": "parameters",
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -304,57 +304,17 @@
             "named": true
           }
         ]
+      },
+      "params": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameter_list",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tup",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -406,7 +366,7 @@
             "named": true
           },
           {
-            "type": "tup",
+            "type": "tuple",
             "named": true
           }
         ]
@@ -512,7 +472,7 @@
     }
   },
   {
-    "type": "parameters",
+    "type": "parameter_list",
     "named": true,
     "fields": {},
     "children": {
@@ -520,7 +480,51 @@
       "required": true,
       "types": [
         {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
           "type": "parameter",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -587,7 +591,7 @@
             "named": true
           },
           {
-            "type": "tup",
+            "type": "tuple",
             "named": true
           }
         ]
@@ -636,7 +640,7 @@
       "required": false,
       "types": [
         {
-          "type": "parameters",
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -699,7 +703,7 @@
           "named": true
         },
         {
-          "type": "tup",
+          "type": "tuple",
           "named": true
         }
       ]
@@ -714,7 +718,7 @@
         "required": false,
         "types": [
           {
-            "type": "parameters",
+            "type": "parameter_list",
             "named": true
           }
         ]
@@ -764,7 +768,7 @@
         "required": false,
         "types": [
           {
-            "type": "parameters",
+            "type": "parameter_list",
             "named": true
           }
         ]
@@ -806,11 +810,11 @@
     }
   },
   {
-    "type": "tup",
+    "type": "tuple",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -854,7 +858,7 @@
           "named": true
         },
         {
-          "type": "tup",
+          "type": "tuple",
           "named": true
         }
       ]

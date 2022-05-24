@@ -10,7 +10,7 @@ a : fn x, y: int -> void : 1
   (const_declaration
     name: (identifier)
     type: (t_fn
-      parameters: (parameters
+      parameters: (parameter_list
         (parameter name: (identifier))
         (parameter name: (identifier)
                    type: (t_int)))
