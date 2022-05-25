@@ -49,13 +49,22 @@ const repeat_separator = (elem, separator, trailing) =>
 
 const terminator = "\n";
 
-const op = ($, operator) =>
-  seq(field("lhs", $._expression), operator, field("rhs", $._expression));
-
-const unary = ($, un) => seq(un, $._expression);
-
 module.exports = grammar({
   name: "sylt",
+
+  precedences: $ => [
+    [
+      "unary",
+      "mulDiv",
+      "addSub",
+      "compare",
+      "and",
+      "or",
+      "access",
+      "arrow_call",
+      "fn_call",
+    ],
+  ],
 
   rules: {
     source_file: $ => repeat(seq($._statement, terminator)),
@@ -124,7 +133,8 @@ module.exports = grammar({
         $.from_use
       ),
 
-    assert_eq: $ => prec.left(PREC.assert, op($, "<=>")),
+    assert_eq: $ =>
+      seq(field("left", $._expression), "<=>", field("right", $._expression)),
     unreachable: $ => "<!>",
 
     // Assignments
@@ -211,32 +221,46 @@ module.exports = grammar({
         "}"
       ),
 
-    // Operators
-    add: $ => prec.left(PREC.addSub, seq($._expression, "+", $._expression)),
-    sub: $ => prec.left(PREC.addSub, seq($._expression, "-", $._expression)),
-    mul: $ => prec.left(PREC.mulDiv, seq($._expression, "*", $._expression)),
-    div: $ => prec.left(PREC.mulDiv, seq($._expression, "/", $._expression)),
-    _arithmetic: $ => choice($.add, $.sub, $.mul, $.div),
-
-    // Comparators
-    _le: $ => prec.left(PREC.comparator, op($, "<=")),
-    _lt: $ => prec.left(PREC.comparator, op($, "<")),
-    _ge: $ => prec.left(PREC.comparator, op($, ">=")),
-    _gt: $ => prec.left(PREC.comparator, op($, ">")),
-    _eq: $ => prec.left(PREC.comparator, op($, "==")),
-    _ne: $ => prec.left(PREC.comparator, op($, "!=")),
-    _comparator: $ => choice($._le, $._lt, $._ge, $._gt, $._eq, $._ne),
-
-    // Bool arithmetic
-    and: $ => prec.left(PREC.boolArithmetic, op($, "and")),
-    or: $ => prec.left(PREC.boolArithmetic, op($, "or")),
-    _bool_arithmetic: $ => choice($.and, $.or),
+    // Binary expressions
+    binary_expression: $ =>
+      choice(
+        ...[
+          ["+", "addSub"],
+          ["-", "addSub"],
+          ["*", "mulDiv"],
+          ["/", "mulDiv"],
+          ["<", "compare"],
+          ["<=", "compare"],
+          [">", "compare"],
+          [">=", "compare"],
+          ["==", "compare"],
+          ["!=", "compare"],
+          ["and", "and"],
+          ["or", "or"],
+        ].map(([op, precedence]) =>
+          prec.left(
+            precedence,
+            seq(
+              field("left", $._expression),
+              field("operator", op),
+              field("right", $._expression)
+            )
+          )
+        )
+      ),
 
     // Unaries
-    not: $ => unary($, "not"),
-    positive: $ => unary($, "+"),
-    negative: $ => unary($, "-"),
-    _unary: $ => choice($.not, $.positive, $.negative),
+    unary_expression: $ =>
+      prec.left(
+        "unary",
+        seq(
+          field(
+            "operator",
+            choice("not", "+", "-"),
+            field("argument", $._expression)
+          )
+        )
+      ),
 
     list: $ => seq("[", repeat_separator($._expression, ",", true), "]"),
 
@@ -267,10 +291,8 @@ module.exports = grammar({
         $.arrow_call,
         $.access,
         $.tuple,
-        $._arithmetic,
-        $._comparator,
-        $._bool_arithmetic,
-        $._unary,
+        $.binary_expression,
+        $.unary_expression,
         $.list,
         $.blob,
         $.externblob,
