@@ -4,6 +4,8 @@ const PREC = {
   mulDiv: 3,
   comparator: 4,
   boolArithmetic: 5,
+  assert: 6,
+  parens: 7,
 };
 
 const t_fn_pu = ($, type) =>
@@ -27,7 +29,9 @@ const blob_externblob = ($, normal) =>
   seq(
     normal ? "blob" : "externblob",
     "{",
-    optional(repeat_separator(seq($.identifier, $._type), ",")),
+    optional(
+      seq(repeat_separator(seq($.identifier, ":", $._type), ","), optional(","))
+    ),
     "}"
   );
 
@@ -77,6 +81,9 @@ module.exports = grammar({
     str: $ => /"[^"]*"/,
     _primitive: $ => choice($.int, $.float, $.nil, $.bool, $.str),
 
+    t_tup: $ => seq("(", repeat_separator($._type, ","), ")"),
+    t_list: $ => seq("[", repeat_separator($._type, ","), "]"),
+
     // Statements
 
     // Declarations
@@ -99,10 +106,22 @@ module.exports = grammar({
     parameter_list: $ => seq(repeat(choice($.parameter, ",")), $.parameter),
 
     // The general type
-    _type: $ => choice($._t_primitive, $.t_fn, $.t_pu, $.identifier),
+    _type: $ =>
+      choice($._t_primitive, $.t_fn, $.t_pu, $.identifier, $.t_list, $.t_tup),
 
     // Statements
-    _statement: $ => choice($._declaration, $._expression, $.assign, $._opeq),
+    _statement: $ =>
+      choice(
+        $._declaration,
+        $._expression,
+        $.assign,
+        $._opeq,
+        $.assert_eq,
+        $.unreachable
+      ),
+
+    assert_eq: $ => prec.left(PREC.assert, op($, "<=>")),
+    unreachable: $ => "<!>",
 
     // Assignments
     assign: $ => seq($._expression, "=", $._expression),
@@ -134,6 +153,8 @@ module.exports = grammar({
     _tup_params: $ =>
       seq("(", optional(repeat_separator($._expression, ",")), ")"),
 
+    parens: $ => prec(PREC.parens, seq("(", $._expression, ")")),
+
     // Function calls
     fn_call: $ =>
       prec(
@@ -155,11 +176,31 @@ module.exports = grammar({
       ),
 
     // Tuple
-    tuple: $ => $._tup_params,
+    tuple: $ =>
+      seq(
+        "(",
+        $._expression,
+        ",",
+        optional(seq(repeat_separator($._expression, ","), ",")),
+        ")"
+      ),
 
     // Blob
-    t_blob: $ => field("name", $.identifier),
-    blob: $ => blob_externblob($, false),
+    blob: $ => blob_externblob($, true),
+    externblob: $ => blob_externblob($, false),
+
+    blob_construct: $ =>
+      seq(
+        $.identifier,
+        "{",
+        optional(
+          seq(
+            repeat_separator(seq($.identifier, ":", $._expression), ","),
+            optional(",")
+          )
+        ),
+        "}"
+      ),
 
     // Operators
     add: $ => prec.left(PREC.addSub, seq($._expression, "+", $._expression)),
@@ -188,6 +229,8 @@ module.exports = grammar({
     negative: $ => unary($, "-"),
     _unary: $ => choice($.not, $.positive, $.negative),
 
+    list: $ => seq("[", repeat_separator($._expression, ","), "]"),
+
     // An expression
     _expression: $ =>
       choice(
@@ -195,6 +238,7 @@ module.exports = grammar({
         $._primitive,
         $.fn,
         $.pu,
+        $.parens,
         $.fn_call,
         $.arrow_call,
         $.access,
@@ -202,7 +246,11 @@ module.exports = grammar({
         $._arithmetic,
         $._comparator,
         $._bool_arithmetic,
-        $._unary
+        $._unary,
+        $.list,
+        $.blob,
+        $.externblob,
+        $.blob_construct
       ),
   },
 });
