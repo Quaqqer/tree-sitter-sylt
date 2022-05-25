@@ -23,7 +23,7 @@ const fn_pu = ($, type) =>
     type,
     optional($.parameter_list),
     choice(field("return", seq("->", $._type), optional("do")), "do"),
-    field("body", repeat(seq($._statement, terminator))),
+    field("body", repeat(seq($.statement, terminator))),
     "end"
   );
 
@@ -41,7 +41,7 @@ const declaration = ($, mutable) =>
     ":",
     field("type", optional($._type)),
     mutable ? "=" : ":",
-    field("expression", $._expression)
+    field("expression", $.expression)
   );
 
 const repeat_separator = (elem, separator, trailing) =>
@@ -66,8 +66,12 @@ module.exports = grammar({
     ],
   ],
 
+  extras: $ => [$.comment, /\s/],
+
+  supertypes: $ => [$.statement, $.expression],
+
   rules: {
-    source_file: $ => repeat(seq($._statement, terminator)),
+    source_file: $ => repeat(seq($.statement, terminator)),
 
     // Primitive stuff
 
@@ -75,6 +79,8 @@ module.exports = grammar({
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
 
     filename: $ => /\/?([A-Za-z\d]+\/)*[A-Za-z\d]+/,
+
+    comment: $ => seq(field("start", "//"), field("content", /[^\r\n]*/)),
 
     // Primitive types
     t_void: $ => "void",
@@ -121,10 +127,10 @@ module.exports = grammar({
       choice($._t_primitive, $.t_fn, $.t_pu, $.identifier, $.t_list, $.t_tup),
 
     // Statements
-    _statement: $ =>
+    statement: $ =>
       choice(
         $._declaration,
-        $._expression,
+        $.expression,
         $.assign,
         $._opeq,
         $.assert_eq,
@@ -134,30 +140,30 @@ module.exports = grammar({
       ),
 
     assert_eq: $ =>
-      seq(field("left", $._expression), "<=>", field("right", $._expression)),
+      seq(field("left", $.expression), "<=>", field("right", $.expression)),
     unreachable: $ => "<!>",
 
     // Assignments
-    assign: $ => seq($._expression, "=", $._expression),
+    assign: $ => seq($.expression, "=", $.expression),
 
     // Operator equals
-    addeq: $ => seq($._expression, "+=", $._expression),
-    subeq: $ => seq($._expression, "-=", $._expression),
-    muleq: $ => seq($._expression, "*=", $._expression),
-    diveq: $ => seq($._expression, "/=", $._expression),
+    addeq: $ => seq($.expression, "+=", $.expression),
+    subeq: $ => seq($.expression, "-=", $.expression),
+    muleq: $ => seq($.expression, "*=", $.expression),
+    diveq: $ => seq($.expression, "/=", $.expression),
     _opeq: $ => choice($.addeq, $.subeq, $.muleq, $.diveq),
 
     // If statements
     if: $ =>
       seq(
         "if",
-        $._expression,
+        $.expression,
         "do",
-        field("body", repeat(seq($._expression, terminator))),
+        field("body", repeat(seq($.expression, terminator))),
         optional(
           seq(
             "else",
-            choice($.if, seq("do", repeat(seq($._expression, terminator))))
+            choice($.if, seq("do", repeat(seq($.expression, terminator))))
           )
         ),
         "end"
@@ -165,42 +171,42 @@ module.exports = grammar({
 
     // Tuple or parameters for a function call
     fn_params: $ =>
-      seq("(", optional(repeat_separator($._expression, ",", false)), ")"),
+      seq("(", optional(repeat_separator($.expression, ",", false)), ")"),
 
-    parens: $ => prec(PREC.parens, seq("(", $._expression, ")")),
+    parens: $ => prec(PREC.parens, seq("(", $.expression, ")")),
 
     // Function calls
     // TODO: Not sure about this precedence
     fn_call: $ =>
       prec(
         PREC.fn_call,
-        seq(field("function", $._expression), field("params", $.fn_params))
+        seq(field("function", $.expression), field("params", $.fn_params))
       ),
     // Prim call
     // TODO: Not sure about this precedence
     prim_call: $ =>
       prec.left(
         PREC.arrow_call,
-        seq($._expression, "'", optional(repeat_separator($._expression, ",")))
+        seq($.expression, "'", optional(repeat_separator($.expression, ",")))
       ),
     // Special arrow call
     arrow_call: $ =>
-      prec.left(1, seq(field("param1", $._expression), "->", $.fn_call)),
+      prec.left(1, seq(field("param1", $.expression), "->", $.fn_call)),
 
     // Accessor
     access: $ =>
       prec(
         PREC.access,
-        seq(field("lhs", $._expression), ".", field("field", $.identifier))
+        seq(field("lhs", $.expression), ".", field("field", $.identifier))
       ),
 
     // Tuple
     tuple: $ =>
       seq(
         "(",
-        $._expression,
+        $.expression,
         ",",
-        optional(seq(repeat_separator($._expression, ","), ",")),
+        optional(seq(repeat_separator($.expression, ","), ",")),
         ")"
       ),
 
@@ -214,7 +220,7 @@ module.exports = grammar({
         "{",
         optional(
           seq(
-            repeat_separator(seq($.identifier, ":", $._expression), ","),
+            repeat_separator(seq($.identifier, ":", $.expression), ","),
             optional(",")
           )
         ),
@@ -241,9 +247,9 @@ module.exports = grammar({
           prec.left(
             precedence,
             seq(
-              field("left", $._expression),
+              field("left", $.expression),
               field("operator", op),
-              field("right", $._expression)
+              field("right", $.expression)
             )
           )
         )
@@ -257,12 +263,12 @@ module.exports = grammar({
           field(
             "operator",
             choice("not", "+", "-"),
-            field("argument", $._expression)
+            field("argument", $.expression)
           )
         )
       ),
 
-    list: $ => seq("[", repeat_separator($._expression, ",", true), "]"),
+    list: $ => seq("[", repeat_separator($.expression, ",", true), "]"),
 
     use: $ => seq("use", $.filename),
     from_use: $ =>
@@ -279,7 +285,7 @@ module.exports = grammar({
     external: $ => seq("external", $.str),
 
     // An expression
-    _expression: $ =>
+    expression: $ =>
       choice(
         $.identifier,
         $._primitive,

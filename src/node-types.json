@@ -1,5 +1,149 @@
 [
   {
+    "type": "expression",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "access",
+        "named": true
+      },
+      {
+        "type": "arrow_call",
+        "named": true
+      },
+      {
+        "type": "binary_expression",
+        "named": true
+      },
+      {
+        "type": "blob",
+        "named": true
+      },
+      {
+        "type": "blob_construct",
+        "named": true
+      },
+      {
+        "type": "bool",
+        "named": true
+      },
+      {
+        "type": "external",
+        "named": true
+      },
+      {
+        "type": "externblob",
+        "named": true
+      },
+      {
+        "type": "float",
+        "named": true
+      },
+      {
+        "type": "fn",
+        "named": true
+      },
+      {
+        "type": "fn_call",
+        "named": true
+      },
+      {
+        "type": "identifier",
+        "named": true
+      },
+      {
+        "type": "int",
+        "named": true
+      },
+      {
+        "type": "list",
+        "named": true
+      },
+      {
+        "type": "nil",
+        "named": true
+      },
+      {
+        "type": "parens",
+        "named": true
+      },
+      {
+        "type": "prim_call",
+        "named": true
+      },
+      {
+        "type": "pu",
+        "named": true
+      },
+      {
+        "type": "str",
+        "named": true
+      },
+      {
+        "type": "tuple",
+        "named": true
+      },
+      {
+        "type": "unary_expression",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "addeq",
+        "named": true
+      },
+      {
+        "type": "assert_eq",
+        "named": true
+      },
+      {
+        "type": "assign",
+        "named": true
+      },
+      {
+        "type": "const_declaration",
+        "named": true
+      },
+      {
+        "type": "diveq",
+        "named": true
+      },
+      {
+        "type": "expression",
+        "named": true
+      },
+      {
+        "type": "from_use",
+        "named": true
+      },
+      {
+        "type": "muleq",
+        "named": true
+      },
+      {
+        "type": "mut_declaration",
+        "named": true
+      },
+      {
+        "type": "subeq",
+        "named": true
+      },
+      {
+        "type": "unreachable",
+        "named": true
+      },
+      {
+        "type": "use",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "access",
     "named": true,
     "fields": {
@@ -18,87 +162,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -114,87 +178,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -209,87 +193,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -315,87 +219,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -405,87 +229,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -501,87 +245,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -596,87 +260,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -740,87 +324,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -887,87 +391,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -979,6 +403,22 @@
     "fields": {}
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "//",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "const_declaration",
     "named": true,
     "fields": {
@@ -987,87 +427,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1139,87 +499,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -1309,131 +589,7 @@
             "named": false
           },
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "addeq",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "assert_eq",
-            "named": true
-          },
-          {
-            "type": "assign",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "const_declaration",
-            "named": true
-          },
-          {
-            "type": "diveq",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "from_use",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "muleq",
-            "named": true
-          },
-          {
-            "type": "mut_declaration",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "subeq",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "unreachable",
-            "named": true
-          },
-          {
-            "type": "use",
+            "type": "statement",
             "named": true
           }
         ]
@@ -1509,87 +665,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1615,87 +691,7 @@
       "required": false,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -1733,87 +729,7 @@
             "named": false
           },
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1824,91 +740,11 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
+          "type": "expression",
           "named": true
         },
         {
           "type": "if",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]
@@ -1923,87 +759,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -2018,87 +774,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -2113,87 +789,7 @@
         "required": true,
         "types": [
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "expression",
             "named": true
           }
         ]
@@ -2346,87 +942,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -2441,87 +957,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -2540,131 +976,7 @@
             "named": false
           },
           {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "addeq",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "assert_eq",
-            "named": true
-          },
-          {
-            "type": "assign",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "const_declaration",
-            "named": true
-          },
-          {
-            "type": "diveq",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "from_use",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "muleq",
-            "named": true
-          },
-          {
-            "type": "mut_declaration",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "subeq",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "unreachable",
-            "named": true
-          },
-          {
-            "type": "use",
+            "type": "statement",
             "named": true
           }
         ]
@@ -2740,131 +1052,7 @@
       "required": false,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "addeq",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "assert_eq",
-          "named": true
-        },
-        {
-          "type": "assign",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "const_declaration",
-          "named": true
-        },
-        {
-          "type": "diveq",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "from_use",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "muleq",
-          "named": true
-        },
-        {
-          "type": "mut_declaration",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "subeq",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        },
-        {
-          "type": "unreachable",
-          "named": true
-        },
-        {
-          "type": "use",
+          "type": "statement",
           "named": true
         }
       ]
@@ -2879,87 +1067,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -3200,87 +1308,7 @@
       "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -3383,6 +1411,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "//",
     "named": false
   },
   {

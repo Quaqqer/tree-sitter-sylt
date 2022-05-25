@@ -1,0 +1,11 @@
+=======
+Comment
+=======
+
+// asd
+a :: 2 // inline comment
+
+---
+
+(source_file (comment)
+             (const_declaration (identifier) (int)) (comment))
