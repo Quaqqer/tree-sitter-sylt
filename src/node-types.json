@@ -74,6 +74,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -209,6 +213,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -356,6 +364,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -494,6 +506,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -606,6 +622,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -752,6 +772,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -890,6 +914,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -1002,6 +1030,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -1148,6 +1180,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -1283,6 +1319,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -1430,6 +1470,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -1568,6 +1612,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -1703,6 +1751,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -1860,6 +1912,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -1995,6 +2051,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -2142,6 +2202,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -2280,6 +2344,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -2392,6 +2460,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -2589,6 +2661,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -2727,6 +2803,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -2839,6 +2919,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -2990,6 +3074,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -3125,6 +3213,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -3273,6 +3365,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -3466,6 +3562,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -3604,6 +3704,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -3716,6 +3820,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -3862,6 +3970,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -4000,6 +4112,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -4115,6 +4231,10 @@
           "named": true
         },
         {
+          "type": "external",
+          "named": true
+        },
+        {
           "type": "externblob",
           "named": true
         },
@@ -4188,6 +4308,21 @@
         },
         {
           "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "external",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "str",
           "named": true
         }
       ]
@@ -4338,6 +4473,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -4351,6 +4490,10 @@
           },
           {
             "type": "fn_call",
+            "named": true
+          },
+          {
+            "type": "from_use",
             "named": true
           },
           {
@@ -4428,6 +4571,10 @@
           {
             "type": "unreachable",
             "named": true
+          },
+          {
+            "type": "use",
+            "named": true
           }
         ]
       },
@@ -4489,6 +4636,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -4680,6 +4831,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -4834,6 +4989,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -4969,6 +5128,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -5120,6 +5283,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -5200,6 +5367,25 @@
     }
   },
   {
+    "type": "from_use",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "filename",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "if",
     "named": true,
     "fields": {
@@ -5265,6 +5451,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -5406,6 +5596,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -5544,6 +5738,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -5656,6 +5854,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -5806,6 +6008,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -5944,6 +6150,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -6056,6 +6266,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -6202,6 +6416,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -6340,6 +6558,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -6452,6 +6674,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -6598,6 +6824,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -6736,6 +6966,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -6848,6 +7082,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -6994,6 +7232,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -7129,6 +7371,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -7277,6 +7523,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -7470,6 +7720,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -7608,6 +7862,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -7720,6 +7978,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -7866,6 +8128,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -8004,6 +8270,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -8116,6 +8386,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -8262,6 +8536,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -8397,6 +8675,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -8610,6 +8892,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -8748,6 +9034,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -8860,6 +9150,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -9010,6 +9304,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -9148,6 +9446,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -9260,6 +9562,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -9406,6 +9712,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -9544,6 +9854,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -9656,6 +9970,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -9802,6 +10120,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -9940,6 +10262,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -10052,6 +10378,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -10222,6 +10552,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -10235,6 +10569,10 @@
           },
           {
             "type": "fn_call",
+            "named": true
+          },
+          {
+            "type": "from_use",
             "named": true
           },
           {
@@ -10312,6 +10650,10 @@
           {
             "type": "unreachable",
             "named": true
+          },
+          {
+            "type": "use",
+            "named": true
           }
         ]
       },
@@ -10373,6 +10715,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -10564,6 +10910,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -10718,6 +11068,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -10853,6 +11207,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -10991,6 +11349,10 @@
           "named": true
         },
         {
+          "type": "external",
+          "named": true
+        },
+        {
           "type": "externblob",
           "named": true
         },
@@ -11004,6 +11366,10 @@
         },
         {
           "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "from_use",
           "named": true
         },
         {
@@ -11081,6 +11447,10 @@
         {
           "type": "unreachable",
           "named": true
+        },
+        {
+          "type": "use",
+          "named": true
         }
       ]
     }
@@ -11147,6 +11517,10 @@
           },
           {
             "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
             "named": true
           },
           {
@@ -11288,6 +11662,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -11400,6 +11778,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -11546,6 +11928,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -11684,6 +12070,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -11796,6 +12186,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
           "named": true
         },
         {
@@ -12168,6 +12562,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -12306,6 +12704,10 @@
             "named": true
           },
           {
+            "type": "external",
+            "named": true
+          },
+          {
             "type": "externblob",
             "named": true
           },
@@ -12421,6 +12823,10 @@
           "named": true
         },
         {
+          "type": "external",
+          "named": true
+        },
+        {
           "type": "externblob",
           "named": true
         },
@@ -12494,6 +12900,21 @@
         },
         {
           "type": "tuple",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "filename",
           "named": true
         }
       ]
@@ -12624,6 +13045,10 @@
     "named": false
   },
   {
+    "type": "external",
+    "named": false
+  },
+  {
     "type": "externblob",
     "named": false
   },
@@ -12632,7 +13057,15 @@
     "named": false
   },
   {
+    "type": "filename",
+    "named": true
+  },
+  {
     "type": "fn",
+    "named": false
+  },
+  {
+    "type": "from",
     "named": false
   },
   {
@@ -12694,6 +13127,10 @@
   {
     "type": "unreachable",
     "named": true
+  },
+  {
+    "type": "use",
+    "named": false
   },
   {
     "type": "{",

@@ -67,6 +67,8 @@ module.exports = grammar({
     // Variable identifier
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
 
+    filename: $ => /\/?([A-Za-z\d]+\/)*[A-Za-z\d]+/,
+
     // Primitive types
     t_void: $ => "void",
     t_bool: $ => "bool",
@@ -119,7 +121,9 @@ module.exports = grammar({
         $.assign,
         $._opeq,
         $.assert_eq,
-        $.unreachable
+        $.unreachable,
+        $.use,
+        $.from_use
       ),
 
     assert_eq: $ => prec.left(PREC.assert, op($, "<=>")),
@@ -241,6 +245,17 @@ module.exports = grammar({
 
     list: $ => seq("[", repeat_separator($._expression, ","), "]"),
 
+    use: $ => seq("use", $.filename),
+    from_use: $ =>
+      seq(
+        "from",
+        $.filename,
+        "use",
+        choice($.identifier, seq("(", repeat_separator($.identifier, ","), ")"))
+      ),
+
+    external: $ => seq("external", $.str),
+
     // An expression
     _expression: $ =>
       choice(
@@ -261,7 +276,8 @@ module.exports = grammar({
         $.list,
         $.blob,
         $.externblob,
-        $.blob_construct
+        $.blob_construct,
+        $.external
       ),
   },
 });
