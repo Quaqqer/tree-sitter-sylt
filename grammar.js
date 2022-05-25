@@ -1,5 +1,9 @@
 const PREC = {
   access: 1,
+  addSub: 2,
+  mulDiv: 3,
+  comparator: 4,
+  boolArithmetic: 5,
 };
 
 const t_fn_pu = ($, type) =>
@@ -40,6 +44,11 @@ const repeat_separator = (elem, separator) =>
   seq(repeat(seq(elem, separator)), elem);
 
 const terminator = "\n";
+
+const op = ($, operator) =>
+  seq(field("lhs", $._expression), operator, field("rhs", $._expression));
+
+const unary = ($, un) => seq(un, $._expression);
 
 module.exports = grammar({
   name: "sylt",
@@ -153,10 +162,31 @@ module.exports = grammar({
     blob: $ => blob_externblob($, false),
 
     // Operators
-    add: $ => prec.left(1, seq($._expression, "+", $._expression)),
-    sub: $ => prec.left(1, seq($._expression, "-", $._expression)),
-    mul: $ => prec.left(2, seq($._expression, "*", $._expression)),
-    div: $ => prec.left(2, seq($._expression, "/", $._expression)),
+    add: $ => prec.left(PREC.addSub, seq($._expression, "+", $._expression)),
+    sub: $ => prec.left(PREC.addSub, seq($._expression, "-", $._expression)),
+    mul: $ => prec.left(PREC.mulDiv, seq($._expression, "*", $._expression)),
+    div: $ => prec.left(PREC.mulDiv, seq($._expression, "/", $._expression)),
+    _arithmetic: $ => choice($.add, $.sub, $.mul, $.div),
+
+    // Comparators
+    _le: $ => prec.left(PREC.comparator, op($, "<=")),
+    _lt: $ => prec.left(PREC.comparator, op($, "<")),
+    _ge: $ => prec.left(PREC.comparator, op($, ">=")),
+    _gt: $ => prec.left(PREC.comparator, op($, ">")),
+    _eq: $ => prec.left(PREC.comparator, op($, "==")),
+    _ne: $ => prec.left(PREC.comparator, op($, "!=")),
+    _comparator: $ => choice($._le, $._lt, $._ge, $._gt, $._eq, $._ne),
+
+    // Bool arithmetic
+    and: $ => prec.left(PREC.boolArithmetic, op($, "and")),
+    or: $ => prec.left(PREC.boolArithmetic, op($, "or")),
+    _bool_arithmetic: $ => choice($.and, $.or),
+
+    // Unaries
+    not: $ => unary($, "not"),
+    positive: $ => unary($, "+"),
+    negative: $ => unary($, "-"),
+    _unary: $ => choice($.not, $.positive, $.negative),
 
     // An expression
     _expression: $ =>
@@ -169,10 +199,10 @@ module.exports = grammar({
         $.arrow_call,
         $.access,
         $.tuple,
-        $.add,
-        $.sub,
-        $.mul,
-        $.div
+        $._arithmetic,
+        $._comparator,
+        $._bool_arithmetic,
+        $._unary
       ),
   },
 });
