@@ -651,7 +651,7 @@
     },
     "assert_eq": {
       "type": "PREC_LEFT",
-      "value": 6,
+      "value": 8,
       "content": {
         "type": "SEQ",
         "members": [
@@ -928,7 +928,7 @@
     },
     "parens": {
       "type": "PREC",
-      "value": 7,
+      "value": 9,
       "content": {
         "type": "SEQ",
         "members": [
@@ -949,7 +949,7 @@
     },
     "fn_call": {
       "type": "PREC",
-      "value": 2,
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -973,6 +973,56 @@
               "named": true,
               "value": "parameter_list"
             }
+          }
+        ]
+      }
+    },
+    "prim_call": {
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "'"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "_expression"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_expression"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           }
         ]
       }
@@ -1004,7 +1054,7 @@
     },
     "access": {
       "type": "PREC",
-      "value": 1,
+      "value": 3,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1375,7 +1425,7 @@
     },
     "add": {
       "type": "PREC_LEFT",
-      "value": 2,
+      "value": 4,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1396,7 +1446,7 @@
     },
     "sub": {
       "type": "PREC_LEFT",
-      "value": 2,
+      "value": 4,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1417,7 +1467,7 @@
     },
     "mul": {
       "type": "PREC_LEFT",
-      "value": 3,
+      "value": 5,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1438,7 +1488,7 @@
     },
     "div": {
       "type": "PREC_LEFT",
-      "value": 3,
+      "value": 5,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1480,7 +1530,7 @@
     },
     "_le": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1509,7 +1559,7 @@
     },
     "_lt": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1538,7 +1588,7 @@
     },
     "_ge": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1567,7 +1617,7 @@
     },
     "_gt": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1596,7 +1646,7 @@
     },
     "_eq": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1625,7 +1675,7 @@
     },
     "_ne": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1683,7 +1733,7 @@
     },
     "and": {
       "type": "PREC_LEFT",
-      "value": 5,
+      "value": 7,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1712,7 +1762,7 @@
     },
     "or": {
       "type": "PREC_LEFT",
-      "value": 5,
+      "value": 7,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1872,6 +1922,10 @@
         {
           "type": "SYMBOL",
           "name": "fn_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "prim_call"
         },
         {
           "type": "SYMBOL",

@@ -1,11 +1,13 @@
 const PREC = {
-  access: 1,
-  addSub: 2,
-  mulDiv: 3,
-  comparator: 4,
-  boolArithmetic: 5,
-  assert: 6,
-  parens: 7,
+  fn_call: 1,
+  arrow_call: 2,
+  access: 3,
+  addSub: 4,
+  mulDiv: 5,
+  comparator: 6,
+  boolArithmetic: 7,
+  assert: 8,
+  parens: 9,
 };
 
 const t_fn_pu = ($, type) =>
@@ -156,13 +158,21 @@ module.exports = grammar({
     parens: $ => prec(PREC.parens, seq("(", $._expression, ")")),
 
     // Function calls
+    // TODO: Not sure about this precedence
     fn_call: $ =>
       prec(
-        2,
+        PREC.fn_call,
         seq(
           field("function", $._expression),
           field("params", alias($._tup_params, $.parameter_list))
         )
+      ),
+    // Prim call
+    // TODO: Not sure about this precedence
+    prim_call: $ =>
+      prec.left(
+        PREC.arrow_call,
+        seq($._expression, "'", optional(repeat_separator($._expression, ",")))
       ),
     // Special arrow call
     arrow_call: $ =>
@@ -240,6 +250,7 @@ module.exports = grammar({
         $.pu,
         $.parens,
         $.fn_call,
+        $.prim_call,
         $.arrow_call,
         $.access,
         $.tuple,
