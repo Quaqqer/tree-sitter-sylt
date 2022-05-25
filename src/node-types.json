@@ -5217,7 +5217,7 @@
         "required": true,
         "types": [
           {
-            "type": "parameter_list",
+            "type": "fn_params",
             "named": true
           }
         ]
@@ -5364,6 +5364,414 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "fn_params",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "!=",
+            "named": false
+          },
+          {
+            "type": "<",
+            "named": false
+          },
+          {
+            "type": "<=",
+            "named": false
+          },
+          {
+            "type": "==",
+            "named": false
+          },
+          {
+            "type": ">",
+            "named": false
+          },
+          {
+            "type": ">=",
+            "named": false
+          },
+          {
+            "type": "access",
+            "named": true
+          },
+          {
+            "type": "add",
+            "named": true
+          },
+          {
+            "type": "and",
+            "named": true
+          },
+          {
+            "type": "arrow_call",
+            "named": true
+          },
+          {
+            "type": "blob",
+            "named": true
+          },
+          {
+            "type": "blob_construct",
+            "named": true
+          },
+          {
+            "type": "bool",
+            "named": true
+          },
+          {
+            "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
+            "named": true
+          },
+          {
+            "type": "externblob",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "fn",
+            "named": true
+          },
+          {
+            "type": "fn_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "mul",
+            "named": true
+          },
+          {
+            "type": "negative",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "not",
+            "named": true
+          },
+          {
+            "type": "or",
+            "named": true
+          },
+          {
+            "type": "parens",
+            "named": true
+          },
+          {
+            "type": "positive",
+            "named": true
+          },
+          {
+            "type": "prim_call",
+            "named": true
+          },
+          {
+            "type": "pu",
+            "named": true
+          },
+          {
+            "type": "str",
+            "named": true
+          },
+          {
+            "type": "sub",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "!=",
+            "named": false
+          },
+          {
+            "type": "<",
+            "named": false
+          },
+          {
+            "type": "<=",
+            "named": false
+          },
+          {
+            "type": "==",
+            "named": false
+          },
+          {
+            "type": ">",
+            "named": false
+          },
+          {
+            "type": ">=",
+            "named": false
+          },
+          {
+            "type": "access",
+            "named": true
+          },
+          {
+            "type": "add",
+            "named": true
+          },
+          {
+            "type": "and",
+            "named": true
+          },
+          {
+            "type": "arrow_call",
+            "named": true
+          },
+          {
+            "type": "blob",
+            "named": true
+          },
+          {
+            "type": "blob_construct",
+            "named": true
+          },
+          {
+            "type": "bool",
+            "named": true
+          },
+          {
+            "type": "div",
+            "named": true
+          },
+          {
+            "type": "external",
+            "named": true
+          },
+          {
+            "type": "externblob",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "fn",
+            "named": true
+          },
+          {
+            "type": "fn_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "mul",
+            "named": true
+          },
+          {
+            "type": "negative",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "not",
+            "named": true
+          },
+          {
+            "type": "or",
+            "named": true
+          },
+          {
+            "type": "parens",
+            "named": true
+          },
+          {
+            "type": "positive",
+            "named": true
+          },
+          {
+            "type": "prim_call",
+            "named": true
+          },
+          {
+            "type": "pu",
+            "named": true
+          },
+          {
+            "type": "str",
+            "named": true
+          },
+          {
+            "type": "sub",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "access",
+          "named": true
+        },
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "and",
+          "named": true
+        },
+        {
+          "type": "arrow_call",
+          "named": true
+        },
+        {
+          "type": "blob",
+          "named": true
+        },
+        {
+          "type": "blob_construct",
+          "named": true
+        },
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "div",
+          "named": true
+        },
+        {
+          "type": "external",
+          "named": true
+        },
+        {
+          "type": "externblob",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fn",
+          "named": true
+        },
+        {
+          "type": "fn_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "mul",
+          "named": true
+        },
+        {
+          "type": "negative",
+          "named": true
+        },
+        {
+          "type": "nil",
+          "named": true
+        },
+        {
+          "type": "not",
+          "named": true
+        },
+        {
+          "type": "or",
+          "named": true
+        },
+        {
+          "type": "parens",
+          "named": true
+        },
+        {
+          "type": "positive",
+          "named": true
+        },
+        {
+          "type": "prim_call",
+          "named": true
+        },
+        {
+          "type": "pu",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        },
+        {
+          "type": "sub",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -8830,410 +9238,13 @@
   {
     "type": "parameter_list",
     "named": true,
-    "fields": {
-      "lhs": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "!=",
-            "named": false
-          },
-          {
-            "type": "<",
-            "named": false
-          },
-          {
-            "type": "<=",
-            "named": false
-          },
-          {
-            "type": "==",
-            "named": false
-          },
-          {
-            "type": ">",
-            "named": false
-          },
-          {
-            "type": ">=",
-            "named": false
-          },
-          {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "add",
-            "named": true
-          },
-          {
-            "type": "and",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "div",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "mul",
-            "named": true
-          },
-          {
-            "type": "negative",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "not",
-            "named": true
-          },
-          {
-            "type": "or",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "positive",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "sub",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          }
-        ]
-      },
-      "rhs": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "!=",
-            "named": false
-          },
-          {
-            "type": "<",
-            "named": false
-          },
-          {
-            "type": "<=",
-            "named": false
-          },
-          {
-            "type": "==",
-            "named": false
-          },
-          {
-            "type": ">",
-            "named": false
-          },
-          {
-            "type": ">=",
-            "named": false
-          },
-          {
-            "type": "access",
-            "named": true
-          },
-          {
-            "type": "add",
-            "named": true
-          },
-          {
-            "type": "and",
-            "named": true
-          },
-          {
-            "type": "arrow_call",
-            "named": true
-          },
-          {
-            "type": "blob",
-            "named": true
-          },
-          {
-            "type": "blob_construct",
-            "named": true
-          },
-          {
-            "type": "bool",
-            "named": true
-          },
-          {
-            "type": "div",
-            "named": true
-          },
-          {
-            "type": "external",
-            "named": true
-          },
-          {
-            "type": "externblob",
-            "named": true
-          },
-          {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "fn",
-            "named": true
-          },
-          {
-            "type": "fn_call",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "int",
-            "named": true
-          },
-          {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "mul",
-            "named": true
-          },
-          {
-            "type": "negative",
-            "named": true
-          },
-          {
-            "type": "nil",
-            "named": true
-          },
-          {
-            "type": "not",
-            "named": true
-          },
-          {
-            "type": "or",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "positive",
-            "named": true
-          },
-          {
-            "type": "prim_call",
-            "named": true
-          },
-          {
-            "type": "pu",
-            "named": true
-          },
-          {
-            "type": "str",
-            "named": true
-          },
-          {
-            "type": "sub",
-            "named": true
-          },
-          {
-            "type": "tuple",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "access",
-          "named": true
-        },
-        {
-          "type": "add",
-          "named": true
-        },
-        {
-          "type": "and",
-          "named": true
-        },
-        {
-          "type": "arrow_call",
-          "named": true
-        },
-        {
-          "type": "blob",
-          "named": true
-        },
-        {
-          "type": "blob_construct",
-          "named": true
-        },
-        {
-          "type": "bool",
-          "named": true
-        },
-        {
-          "type": "div",
-          "named": true
-        },
-        {
-          "type": "external",
-          "named": true
-        },
-        {
-          "type": "externblob",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fn",
-          "named": true
-        },
-        {
-          "type": "fn_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "mul",
-          "named": true
-        },
-        {
-          "type": "negative",
-          "named": true
-        },
-        {
-          "type": "nil",
-          "named": true
-        },
-        {
-          "type": "not",
-          "named": true
-        },
-        {
-          "type": "or",
-          "named": true
-        },
-        {
           "type": "parameter",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "positive",
-          "named": true
-        },
-        {
-          "type": "prim_call",
-          "named": true
-        },
-        {
-          "type": "pu",
-          "named": true
-        },
-        {
-          "type": "str",
-          "named": true
-        },
-        {
-          "type": "sub",
-          "named": true
-        },
-        {
-          "type": "tuple",
           "named": true
         }
       ]

@@ -9,5 +9,5 @@ Function arrow call
 (source_file 
   (arrow_call param1: (int)
     (fn_call function: (identifier) 
-             params: (parameter_list (int)
-                                     (str)))))
+             params: (fn_params (int)
+                                (str)))))

@@ -31,9 +31,7 @@ const blob_externblob = ($, normal) =>
   seq(
     normal ? "blob" : "externblob",
     "{",
-    optional(
-      seq(repeat_separator(seq($.identifier, ":", $._type), ","), optional(","))
-    ),
+    optional(repeat_separator(seq($.identifier, ":", $._type), ",", true)),
     "}"
   );
 
@@ -46,8 +44,8 @@ const declaration = ($, mutable) =>
     field("expression", $._expression)
   );
 
-const repeat_separator = (elem, separator) =>
-  seq(repeat(seq(elem, separator)), elem);
+const repeat_separator = (elem, separator, trailing) =>
+  seq(repeat(seq(elem, separator)), elem, ...(trailing ? [separator] : []));
 
 const terminator = "\n";
 
@@ -85,8 +83,8 @@ module.exports = grammar({
     str: $ => /"[^"]*"/,
     _primitive: $ => choice($.int, $.float, $.nil, $.bool, $.str),
 
-    t_tup: $ => seq("(", repeat_separator($._type, ","), ")"),
-    t_list: $ => seq("[", repeat_separator($._type, ","), "]"),
+    t_tup: $ => seq("(", repeat_separator($._type, ",", true), ")"),
+    t_list: $ => seq("[", repeat_separator($._type, ",", true), "]"),
 
     // Statements
 
@@ -156,8 +154,8 @@ module.exports = grammar({
       ),
 
     // Tuple or parameters for a function call
-    _tup_params: $ =>
-      seq("(", optional(repeat_separator($._expression, ",")), ")"),
+    fn_params: $ =>
+      seq("(", optional(repeat_separator($._expression, ",", false)), ")"),
 
     parens: $ => prec(PREC.parens, seq("(", $._expression, ")")),
 
@@ -166,10 +164,7 @@ module.exports = grammar({
     fn_call: $ =>
       prec(
         PREC.fn_call,
-        seq(
-          field("function", $._expression),
-          field("params", alias($._tup_params, $.parameter_list))
-        )
+        seq(field("function", $._expression), field("params", $.fn_params))
       ),
     // Prim call
     // TODO: Not sure about this precedence
@@ -243,7 +238,7 @@ module.exports = grammar({
     negative: $ => unary($, "-"),
     _unary: $ => choice($.not, $.positive, $.negative),
 
-    list: $ => seq("[", repeat_separator($._expression, ","), "]"),
+    list: $ => seq("[", repeat_separator($._expression, ",", true), "]"),
 
     use: $ => seq("use", $.filename),
     from_use: $ =>
@@ -251,7 +246,10 @@ module.exports = grammar({
         "from",
         $.filename,
         "use",
-        choice($.identifier, seq("(", repeat_separator($.identifier, ","), ")"))
+        choice(
+          $.identifier,
+          seq("(", repeat_separator($.identifier, ",", true), ")")
+        )
       ),
 
     external: $ => seq("external", $.str),
