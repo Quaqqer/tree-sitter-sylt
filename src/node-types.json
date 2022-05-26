@@ -28,6 +28,10 @@
         "named": true
       },
       {
+        "type": "case",
+        "named": true
+      },
+      {
         "type": "enum",
         "named": true
       },
@@ -327,6 +331,42 @@
     "fields": {}
   },
   {
+    "type": "branch_list",
+    "named": false,
+    "fields": {
+      "bind": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "expression": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "variant": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "call",
     "named": true,
     "fields": {
@@ -350,6 +390,46 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "case",
+    "named": true,
+    "fields": {
+      "branches": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "branch_list",
+            "named": false
+          }
+        ]
+      },
+      "else": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_branch",
+            "named": false
+          }
+        ]
+      },
+      "expression": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "else_branch",
+            "named": false
+          },
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1052,11 +1132,19 @@
     "named": false
   },
   {
+    "type": "case",
+    "named": false
+  },
+  {
     "type": "do",
     "named": false
   },
   {
     "type": "else_body",
+    "named": false
+  },
+  {
+    "type": "else_branch",
     "named": false
   },
   {

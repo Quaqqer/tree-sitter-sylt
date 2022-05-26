@@ -1,5 +1,9 @@
 const repeat_separator = (elem, separator, trailing) =>
-  seq(repeat(seq(elem, separator)), elem, ...(trailing ? [optional(separator)] : []));
+  seq(
+    repeat(seq(elem, separator)),
+    elem,
+    ...(trailing ? [optional(separator)] : [])
+  );
 
 const terminator = "\n";
 
@@ -173,6 +177,38 @@ module.exports = grammar({
         "end"
       ),
 
+    case: $ =>
+      seq(
+        "case",
+        field("expression", $.expression),
+        "do",
+        field(
+          "branches",
+          alias(
+            repeat(
+              seq(
+                field("variant", $.identifier),
+                optional(field("bind", $.identifier)),
+                "->",
+                field("expression", $.expression),
+                "end"
+              )
+            ),
+            "branch_list"
+          )
+        ),
+        field(
+          "else",
+          alias(
+            optional(
+              seq("else", field("expression", optional($.expression)), "end")
+            ),
+            "else_branch"
+          )
+        ),
+        "end"
+      ),
+
     list: $ =>
       seq("[", alias(repeat_separator($.expression, ",", true), "values"), "]"),
     tuple: $ =>
@@ -268,6 +304,7 @@ module.exports = grammar({
         $.prim_call,
         $.arrow_call,
         $.if,
+        $.case,
         $.list,
         $.tuple,
         $.blob,
