@@ -1,9 +1,14 @@
-const repeat_separator = (elem, separator, trailing) =>
-  seq(
-    elem,
-    repeat(seq(separator, elem)),
-    ...(trailing ? [optional(separator)] : [])
+function sep1(rule, separator, trailing) {
+  return seq(
+    rule,
+    repeat(seq(separator, rule)),
+    ...(trailing ? [separator] : [])
   );
+}
+
+function sep(rule, separator, trailing) {
+  return optional(sep1(rule, separator, trailing));
+}
 
 const PREC = {
   assert_eq: 1,
@@ -30,9 +35,9 @@ module.exports = grammar({
   supertypes: $ => [$.expression, $.statement],
 
   rules: {
-    source_file: $ => $.block,
+    source_file: $ => optional($.block),
 
-    block: $ => repeat_separator($.statement, terminator, true),
+    block: $ => sep1($.statement, terminator, true),
 
     // General stuff
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
@@ -45,12 +50,12 @@ module.exports = grammar({
     /// Types
     t_primitive: $ => choice("void", "bool", "int", "float", "str"),
     t_any: $ => "*",
-    t_tup: $ => seq("(", repeat_separator($.type, ",", true), ")"),
+    t_tup: $ => seq("(", $.type, ",", sep($.type, ",", true), ")"),
     t_list: $ => seq("[", $.type, "]"),
     t_fn: $ =>
       seq(
         choice("fn", "pu"),
-        optional(alias(repeat_separator($.type, ","), "parameter_list")),
+        alias(sep($.type, ","), "parameter_list"),
         "->",
         $.type
       ),
@@ -106,14 +111,9 @@ module.exports = grammar({
         choice("fn", "pu"),
         field(
           "parameters",
-          optional(
-            alias(
-              repeat_separator(
-                seq($.identifier, optional(seq(":", $.type))),
-                ","
-              ),
-              "parameter_list"
-            )
+          alias(
+            sep(seq($.identifier, optional(seq(":", $.type))), ","),
+            "parameter_list"
           )
         ),
         choice(field("return", seq("->", $.type), optional("do")), "do"),
@@ -130,13 +130,7 @@ module.exports = grammar({
         seq(
           field("function", $.expression),
           "(",
-          field(
-            "parameters",
-            alias(
-              optional(repeat_separator($.expression, ",")),
-              "parameter_list"
-            )
-          ),
+          field("parameters", alias(sep($.expression, ","), "parameter_list")),
           ")"
         )
       ),
@@ -146,12 +140,7 @@ module.exports = grammar({
         seq(
           $.expression,
           "'",
-          field(
-            "parameters",
-            optional(
-              alias(repeat_separator($.expression, ","), "parameter_list")
-            )
-          )
+          field("parameters", alias(sep($.expression, ","), "parameter_list"))
         )
       ),
     arrow_call: $ =>
@@ -215,19 +204,11 @@ module.exports = grammar({
     loop: $ =>
       seq("loop", field("condition", $.expression), "do", $.block, "end"),
 
-    list: $ =>
-      seq("[", alias(repeat_separator($.expression, ",", true), "values"), "]"),
+    list: $ => seq("[", alias(sep($.expression, ",", true), "values"), "]"),
     tuple: $ =>
       seq(
         "(",
-        alias(
-          seq(
-            $.expression,
-            ",",
-            optional(seq(repeat_separator($.expression, ","), ","))
-          ),
-          "values"
-        ),
+        alias(seq($.expression, ",", sep($.expression, ",", true)), "values"),
         ")"
       ),
     blob: $ =>
@@ -235,10 +216,13 @@ module.exports = grammar({
         choice("blob", "externblob"),
         field(
           "generics",
-          optional(alias(repeat_separator($.generic, ","), "generic_list"))
+          alias(optional(seq("(", sep1($.generic, ","), ")")), "generic_list")
         ),
         "{",
-        optional(repeat_separator(seq($.identifier, ":", $.type), ",", true)),
+        field(
+          "fields",
+          alias(sep(seq($.identifier, ":", $.type), ",", true), "blob_fields")
+        ),
         "}"
       ),
     blob_construct: $ =>
@@ -247,16 +231,14 @@ module.exports = grammar({
         "{",
         field(
           "fields",
-          optional(
-            repeat_separator(
-              seq(
-                field("field", $.identifier),
-                ":",
-                field("value", $.expression)
-              ),
-              ",",
-              true
-            )
+          sep(
+            seq(
+              field("field", $.identifier),
+              ":",
+              field("value", $.expression)
+            ),
+            ",",
+            true
           )
         ),
         "}"
@@ -265,21 +247,12 @@ module.exports = grammar({
     enum: $ =>
       seq(
         "enum",
-        field(
-          "generics",
-          optional(alias(repeat_separator($.generic, ","), "generic_list"))
-        ),
+        field("generics", optional(seq("(", sep1($.generic, ","), ")"))),
         field(
           "variants",
-          optional(
-            alias(
-              repeat_separator(
-                seq($.identifier, optional(field("type", $.type))),
-                ",",
-                true
-              ),
-              "variant_list"
-            )
+          alias(
+            sep(seq($.identifier, optional(field("type", $.type))), ",", true),
+            "variant_list"
           )
         ),
         "end"
@@ -333,10 +306,7 @@ module.exports = grammar({
         "from",
         $.filename,
         "use",
-        choice(
-          $.identifier,
-          seq("(", repeat_separator($.identifier, ",", true), ")")
-        )
+        choice($.identifier, seq("(", sep($.identifier, ",", true), ")"))
       ),
 
     declaration: $ =>

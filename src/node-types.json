@@ -241,6 +241,16 @@
     "type": "blob",
     "named": true,
     "fields": {
+      "fields": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "blob_fields",
+            "named": false
+          }
+        ]
+      },
       "generics": {
         "multiple": true,
         "required": false,
@@ -251,20 +261,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -316,6 +312,53 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "blob_fields",
+    "named": false,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "t_any",
+          "named": true
+        },
+        {
+          "type": "t_blob",
+          "named": true
+        },
+        {
+          "type": "t_fn",
+          "named": true
+        },
+        {
+          "type": "t_generic",
+          "named": true
+        },
+        {
+          "type": "t_list",
+          "named": true
+        },
+        {
+          "type": "t_primitive",
+          "named": true
+        },
+        {
+          "type": "t_tup",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -531,8 +574,20 @@
         "required": false,
         "types": [
           {
-            "type": "generic_list",
+            "type": "(",
             "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "generic",
+            "named": true
           }
         ]
       },
@@ -916,7 +971,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "block",
@@ -1271,6 +1326,10 @@
     "named": false
   },
   {
+    "type": "blob_fields",
+    "named": false
+  },
+  {
     "type": "bool",
     "named": false
   },
@@ -1352,11 +1411,11 @@
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "loop",
