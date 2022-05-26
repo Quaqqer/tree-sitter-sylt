@@ -68,6 +68,10 @@
         "named": true
       },
       {
+        "type": "loop",
+        "named": true
+      },
+      {
         "type": "member",
         "named": true
       },
@@ -114,6 +118,10 @@
         "named": true
       },
       {
+        "type": "break",
+        "named": true
+      },
+      {
         "type": "declaration",
         "named": true
       },
@@ -123,6 +131,10 @@
       },
       {
         "type": "from_use",
+        "named": true
+      },
+      {
+        "type": "ret",
         "named": true
       },
       {
@@ -789,6 +801,40 @@
     "fields": {}
   },
   {
+    "type": "loop",
+    "named": true,
+    "fields": {
+      "action": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "do",
+            "named": false
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "member",
     "named": true,
     "fields": {
@@ -872,6 +918,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "ret",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1172,6 +1234,10 @@
     "named": false
   },
   {
+    "type": "break",
+    "named": true
+  },
+  {
     "type": "case",
     "named": false
   },
@@ -1252,6 +1318,10 @@
     "named": true
   },
   {
+    "type": "loop",
+    "named": false
+  },
+  {
     "type": "nil",
     "named": true
   },
@@ -1269,6 +1339,10 @@
   },
   {
     "type": "pu",
+    "named": false
+  },
+  {
+    "type": "ret",
     "named": false
   },
   {

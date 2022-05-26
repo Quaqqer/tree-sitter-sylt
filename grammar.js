@@ -126,7 +126,7 @@ module.exports = grammar({
         "(",
         field(
           "parameters",
-          optional(alias(repeat_separator($.expression, ","), "parameter_list"))
+          alias(optional(repeat_separator($.expression, ",")), "parameter_list")
         ),
         ")"
       ),
@@ -205,6 +205,15 @@ module.exports = grammar({
             "else_branch"
           )
         ),
+        "end"
+      ),
+    // TODO: Single statement loop true do stmt end == loop true stmt
+    loop: $ =>
+      seq(
+        "loop",
+        field("condition", $.expression),
+        "do",
+        field("action", repeat_separator($.statement, terminator, true)),
         "end"
       ),
 
@@ -305,6 +314,7 @@ module.exports = grammar({
         $.arrow_call,
         $.if,
         $.case,
+        $.loop,
         $.list,
         $.tuple,
         $.blob,
@@ -340,6 +350,9 @@ module.exports = grammar({
         )
       ),
 
+    ret: $ => seq("ret", field("value", $.expression)),
+    break: $ => "break",
+
     assert_eq: $ => seq($.expression, "<=>", $.expression),
     unreachable: $ => "<!>",
 
@@ -351,6 +364,8 @@ module.exports = grammar({
         $.declaration,
         $.assignment,
         $.augmented_assignment,
+        $.ret,
+        $.break,
         $.assert_eq,
         $.unreachable
       ),
