@@ -102,8 +102,16 @@
               "name": "type"
             },
             {
-              "type": "STRING",
-              "value": ","
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         },
@@ -144,8 +152,16 @@
               "name": "type"
             },
             {
-              "type": "STRING",
-              "value": ","
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         },
@@ -807,20 +823,25 @@
           "type": "FIELD",
           "name": "body",
           "content": {
-            "type": "REPEAT",
+            "type": "ALIAS",
             "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "statement"
-                },
-                {
-                  "type": "STRING",
-                  "value": "\n"
-                }
-              ]
-            }
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "statement"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              }
+            },
+            "named": false,
+            "value": "function_body"
           }
         },
         {
@@ -887,6 +908,65 @@
           "value": ")"
         }
       ]
+    },
+    "prim_call": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "'"
+          },
+          {
+            "type": "FIELD",
+            "name": "parameters",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "REPEAT",
+                        "content": {
+                          "type": "SEQ",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "expression"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": ","
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "expression"
+                      }
+                    ]
+                  },
+                  "named": false,
+                  "value": "parameter_list"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          }
+        ]
+      }
     },
     "arrow_call": {
       "type": "SEQ",
@@ -1064,8 +1144,16 @@
                 "name": "expression"
               },
               {
-                "type": "STRING",
-                "value": ","
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               }
             ]
           },
@@ -1268,8 +1356,16 @@
                     ]
                   },
                   {
-                    "type": "STRING",
-                    "value": ","
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
                   }
                 ]
               },
@@ -1370,8 +1466,16 @@
                     ]
                   },
                   {
-                    "type": "STRING",
-                    "value": ","
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
                   }
                 ]
               },
@@ -1510,8 +1614,16 @@
                       ]
                     },
                     {
-                      "type": "STRING",
-                      "value": ","
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1527,6 +1639,27 @@
         {
           "type": "STRING",
           "value": "end"
+        }
+      ]
+    },
+    "enum_construct": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "variant",
+          "content": {
+            "type": "SYMBOL",
+            "name": "member"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
         }
       ]
     },
@@ -1613,6 +1746,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "prim_call"
+        },
+        {
+          "type": "SYMBOL",
           "name": "arrow_call"
         },
         {
@@ -1638,6 +1775,10 @@
         {
           "type": "SYMBOL",
           "name": "enum"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "enum_construct"
         },
         {
           "type": "SYMBOL",
@@ -1715,8 +1856,16 @@
                       "name": "identifier"
                     },
                     {
-                      "type": "STRING",
-                      "value": ","
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -2012,6 +2161,66 @@
       {
         "type": "SYMBOL",
         "name": "arrow_call"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "expression"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "binary_expression"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "call"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "arrow_call"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "prim_call"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "member"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
       }
     ]
   ],

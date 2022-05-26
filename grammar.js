@@ -1,5 +1,5 @@
 const repeat_separator = (elem, separator, trailing) =>
-  seq(repeat(seq(elem, separator)), elem, ...(trailing ? [separator] : []));
+  seq(repeat(seq(elem, separator)), elem, ...(trailing ? [optional(separator)] : []));
 
 const terminator = "\n";
 
@@ -8,7 +8,15 @@ module.exports = grammar({
 
   precedences: $ => [
     ["unary", "mulDiv", "addSub", "compare", "and", "or"],
+
     [$.expression, $.arrow_call],
+
+    [$.expression, $.enum_construct],
+    [$.binary_expression, $.enum_construct],
+    [$.call, $.enum_construct],
+    [$.arrow_call, $.enum_construct],
+    [$.prim_call, $.enum_construct],
+    [$.member, $.enum_construct],
   ],
 
   extras: $ => [$.comment, /\s/],
@@ -107,7 +115,10 @@ module.exports = grammar({
           )
         ),
         choice(field("return", seq("->", $.type), optional("do")), "do"),
-        field("body", repeat(seq($.statement, terminator))),
+        field(
+          "body",
+          alias(repeat(seq($.statement, terminator)), "function_body")
+        ),
         "end"
       ),
 
@@ -120,6 +131,20 @@ module.exports = grammar({
           optional(alias(repeat_separator($.expression, ","), "parameter_list"))
         ),
         ")"
+      ),
+    prim_call: $ =>
+      // This is wrong
+      prec.left(
+        seq(
+          $.expression,
+          "'",
+          field(
+            "parameters",
+            optional(
+              alias(repeat_separator($.expression, ","), "parameter_list")
+            )
+          )
+        )
       ),
     arrow_call: $ =>
       seq(field("param1", $.expression), "->", field("call", $.call)),
@@ -220,6 +245,8 @@ module.exports = grammar({
         ),
         "end"
       ),
+    enum_construct: $ =>
+      seq(field("variant", $.member), field("value", $.expression)),
 
     member: $ => seq($.expression, ".", field("member", $.identifier)),
 
@@ -238,6 +265,7 @@ module.exports = grammar({
         $.unary_expression,
         $.function,
         $.call,
+        $.prim_call,
         $.arrow_call,
         $.if,
         $.list,
@@ -245,6 +273,7 @@ module.exports = grammar({
         $.blob,
         $.blob_construct,
         $.enum,
+        $.enum_construct,
         $.member,
         $.external
       ),
