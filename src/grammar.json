@@ -1111,6 +1111,68 @@
         }
       ]
     },
+    "case_branch": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "variant",
+          "content": {
+            "type": "SYMBOL",
+            "name": "member"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "bind",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "statement"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              }
+            },
+            "named": false,
+            "value": "branch_body"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "end"
+        }
+      ]
+    },
     "case": {
       "type": "SEQ",
       "members": [
@@ -1138,49 +1200,8 @@
             "content": {
               "type": "REPEAT",
               "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "variant",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "identifier"
-                    }
-                  },
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "FIELD",
-                        "name": "bind",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "identifier"
-                        }
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "->"
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "expression",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "expression"
-                    }
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "end"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "case_branch"
               }
             },
             "named": false,
@@ -1204,18 +1225,27 @@
                     },
                     {
                       "type": "FIELD",
-                      "name": "expression",
+                      "name": "body",
                       "content": {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "expression"
-                          },
-                          {
-                            "type": "BLANK"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "REPEAT",
+                          "content": {
+                            "type": "SEQ",
+                            "members": [
+                              {
+                                "type": "SYMBOL",
+                                "name": "statement"
+                              },
+                              {
+                                "type": "STRING",
+                                "value": "\n"
+                              }
+                            ]
                           }
-                        ]
+                        },
+                        "named": false,
+                        "value": "branch_body"
                       }
                     },
                     {
@@ -2298,61 +2328,71 @@
     [
       {
         "type": "SYMBOL",
-        "name": "expression"
+        "name": "enum_construct"
       },
       {
         "type": "SYMBOL",
-        "name": "enum_construct"
+        "name": "expression"
       }
     ],
     [
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      },
       {
         "type": "SYMBOL",
         "name": "binary_expression"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "enum_construct"
       }
     ],
     [
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      },
       {
         "type": "SYMBOL",
         "name": "call"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "enum_construct"
       }
     ],
     [
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      },
       {
         "type": "SYMBOL",
         "name": "arrow_call"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "enum_construct"
       }
     ],
     [
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
+      },
       {
         "type": "SYMBOL",
         "name": "prim_call"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "enum_construct"
       }
     ],
     [
       {
         "type": "SYMBOL",
-        "name": "member"
+        "name": "enum_construct"
       },
       {
         "type": "SYMBOL",
-        "name": "enum_construct"
+        "name": "member"
+      }
+    ],
+    [
+      {
+        "type": "SYMBOL",
+        "name": "case_branch"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "expression"
       }
     ]
   ],

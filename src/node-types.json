@@ -331,39 +331,33 @@
     "fields": {}
   },
   {
+    "type": "branch_body",
+    "named": false,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "branch_list",
     "named": false,
-    "fields": {
-      "bind": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "expression": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "variant": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "case_branch",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -396,6 +390,16 @@
     "type": "case",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "branch_body",
+            "named": false
+          }
+        ]
+      },
       "branches": {
         "multiple": false,
         "required": false,
@@ -417,15 +421,47 @@
         ]
       },
       "expression": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "else_branch",
-            "named": false
-          },
-          {
             "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "case_branch",
+    "named": true,
+    "fields": {
+      "bind": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "branch_body",
+            "named": false
+          }
+        ]
+      },
+      "variant": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "member",
             "named": true
           }
         ]
@@ -1233,11 +1269,11 @@
   },
   {
     "type": "str",
-    "named": true
+    "named": false
   },
   {
     "type": "str",
-    "named": false
+    "named": true
   },
   {
     "type": "true",

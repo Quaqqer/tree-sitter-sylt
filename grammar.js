@@ -21,6 +21,8 @@ module.exports = grammar({
     [$.arrow_call, $.enum_construct],
     [$.prim_call, $.enum_construct],
     [$.member, $.enum_construct],
+
+    [$.case_branch, $.expression],
   ],
 
   extras: $ => [$.comment, /\s/],
@@ -177,31 +179,36 @@ module.exports = grammar({
         "end"
       ),
 
+    case_branch: $ =>
+      seq(
+        field("variant", $.member),
+        field("bind", optional($.identifier)),
+        "->",
+        field(
+          "body",
+          alias(repeat(seq($.statement, terminator)), "branch_body")
+        ),
+        "end"
+      ),
+
     case: $ =>
       seq(
         "case",
         field("expression", $.expression),
         "do",
-        field(
-          "branches",
-          alias(
-            repeat(
-              seq(
-                field("variant", $.identifier),
-                optional(field("bind", $.identifier)),
-                "->",
-                field("expression", $.expression),
-                "end"
-              )
-            ),
-            "branch_list"
-          )
-        ),
+        field("branches", alias(repeat($.case_branch), "branch_list")),
         field(
           "else",
           alias(
             optional(
-              seq("else", field("expression", optional($.expression)), "end")
+              seq(
+                "else",
+                field(
+                  "body",
+                  alias(repeat(seq($.statement, terminator)), "branch_body")
+                ),
+                "end"
+              )
             ),
             "else_branch"
           )
@@ -284,6 +291,7 @@ module.exports = grammar({
     enum_construct: $ =>
       seq(field("variant", $.member), field("value", $.expression)),
 
+    // General member
     member: $ => seq($.expression, ".", field("member", $.identifier)),
 
     external: $ => seq("external", $.str),
