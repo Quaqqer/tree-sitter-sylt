@@ -124,7 +124,7 @@ module.exports = grammar({
 
     call: $ =>
       seq(
-        $.expression,
+        field("function", $.expression),
         "(",
         field(
           "parameters",
@@ -154,19 +154,25 @@ module.exports = grammar({
         "if",
         field("condition", $.expression),
         "do",
-        field("action", repeat_separator($.statement, terminator, true))
+        field(
+          "action",
+          optional(repeat_separator($.statement, terminator, true))
+        )
       ),
 
     else_branch: $ =>
       seq(
         "else",
-        field("action", repeat_separator($.statement, terminator, true))
+        field(
+          "action",
+          optional(repeat_separator($.statement, terminator, true))
+        )
       ),
 
     if: $ =>
       seq(
         $.if_branch,
-        repeat(seq("else", $.if_branch)),
+        repeat(prec.left(seq("else", $.if_branch))),
         optional($.else_branch),
         "end"
       ),

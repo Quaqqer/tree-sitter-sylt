@@ -346,6 +346,16 @@
     "type": "call",
     "named": true,
     "fields": {
+      "function": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
       "parameters": {
         "multiple": true,
         "required": false,
@@ -356,16 +366,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -479,49 +479,23 @@
     }
   },
   {
-    "type": "else_body",
-    "named": false,
+    "type": "else_branch",
+    "named": true,
     "fields": {
-      "condition": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "else_body": {
+      "action": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "else_body",
+            "type": "\n",
             "named": false
-          }
-        ]
-      },
-      "if_body": {
-        "multiple": false,
-        "required": false,
-        "types": [
+          },
           {
-            "type": "if_body",
-            "named": false
+            "type": "statement",
+            "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -745,7 +719,40 @@
   {
     "type": "if",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "else_branch",
+          "named": true
+        },
+        {
+          "type": "if_branch",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_branch",
+    "named": true,
     "fields": {
+      "action": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -755,42 +762,7 @@
             "named": true
           }
         ]
-      },
-      "else_body": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "else_body",
-            "named": false
-          }
-        ]
-      },
-      "if_body": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "if_body",
-            "named": false
-          }
-        ]
       }
-    }
-  },
-  {
-    "type": "if_body",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1339,10 +1311,6 @@
     "named": false
   },
   {
-    "type": "else_body",
-    "named": false
-  },
-  {
     "type": "else_branch",
     "named": false
   },
@@ -1404,11 +1372,11 @@
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "loop",
