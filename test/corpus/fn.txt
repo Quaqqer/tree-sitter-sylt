@@ -2,14 +2,15 @@
 Function declaration
 ====================
 
-a :: fn do
+a : fn -> void : fn do
   b :: 2
 end
 
 ---
 
 (source_file
-  (const_declaration
+  (declaration
     name: (identifier)
+    type: (t_fn (t_primitive))
     expression: (fn
-      body: (const_declaration name: (identifier) expression: (int)))))
+      body: (declaration name: (identifier) expression: (int)))))

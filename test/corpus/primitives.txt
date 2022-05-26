@@ -15,29 +15,29 @@ f :: 1e-2
 ---
 
 (source_file
-  (const_declaration
+  (declaration 
     name: (identifier)
     expression: (int))
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (int))
 
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (float))
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (float))
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (float))
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (float))
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (float))
-  (const_declaration
+  (declaration
     name: (identifier)
     expression: (float))
   )

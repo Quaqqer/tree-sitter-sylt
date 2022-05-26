@@ -7,7 +7,7 @@ a : int : 2
 ---
 
 (source_file
-  (const_declaration
+  (declaration
     name: (identifier)
-    type: (t_int)
+    type: (t_primitive)
     expression: (int)))

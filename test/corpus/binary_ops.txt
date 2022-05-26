@@ -2,21 +2,19 @@
 Binary operations
 =================
 
-a :: 1 + 2 * 3 / 4 < 4 and true
+1 + 2 * 3 / 4 < 4 and true
 
 ---
 
 (source_file 
-  (const_declaration
-    name: (identifier)
-    expression: (binary_expression
-      left: (binary_expression 
-        left: (binary_expression
-          left: (int)
-          right: (binary_expression
-            left: (binary_expression
-              left: (int)
-              right: (int))
-            right: (int)))
-        right: (int))
-      right: (bool))))
+  (binary_expression
+    left: (binary_expression 
+      left: (binary_expression
+        left: (int)
+        right: (binary_expression
+          left: (binary_expression
+            left: (int)
+            right: (int))
+          right: (int)))
+      right: (int))
+    right: (bool)))

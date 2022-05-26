@@ -6,4 +6,6 @@ x.y()
 
 ---
 
-(source_file (fn_call function: (access lhs: (identifier) field: (identifier)) params: (fn_params)))
+(source_file
+  (call 
+    (member (identifier) (identifier))))
