@@ -149,7 +149,7 @@ module.exports = grammar({
     arrow_call: $ =>
       seq(field("param1", $.expression), "->", field("call", $.call)),
 
-    if_branch: $ =>
+    _if_branch: $ =>
       seq(
         "if",
         field("condition", $.expression),
@@ -160,7 +160,7 @@ module.exports = grammar({
         )
       ),
 
-    else_branch: $ =>
+    _else_branch: $ =>
       seq(
         "else",
         field(
@@ -171,9 +171,9 @@ module.exports = grammar({
 
     if: $ =>
       seq(
-        $.if_branch,
-        repeat(prec.left(seq("else", $.if_branch))),
-        optional($.else_branch),
+        field("branch", $._if_branch),
+        field("branch", repeat(prec.left(seq("else", $._if_branch)))),
+        field("else", optional($._else_branch)),
         "end"
       ),
 

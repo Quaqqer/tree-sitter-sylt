@@ -916,7 +916,7 @@
         }
       ]
     },
-    "if_branch": {
+    "_if_branch": {
       "type": "SEQ",
       "members": [
         {
@@ -986,7 +986,7 @@
         }
       ]
     },
-    "else_branch": {
+    "_else_branch": {
       "type": "SEQ",
       "members": [
         {
@@ -1048,40 +1048,52 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "if_branch"
+          "type": "FIELD",
+          "name": "branch",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_if_branch"
+          }
         },
         {
-          "type": "REPEAT",
+          "type": "FIELD",
+          "name": "branch",
           "content": {
-            "type": "PREC_LEFT",
-            "value": 0,
+            "type": "REPEAT",
             "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "else"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "if_branch"
-                }
-              ]
+              "type": "PREC_LEFT",
+              "value": 0,
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "else"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_if_branch"
+                  }
+                ]
+              }
             }
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "else_branch"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "FIELD",
+          "name": "else",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_else_branch"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",

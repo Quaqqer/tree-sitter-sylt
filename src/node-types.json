@@ -479,26 +479,6 @@
     }
   },
   {
-    "type": "else_branch",
-    "named": true,
-    "fields": {
-      "action": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "\n",
-            "named": false
-          },
-          {
-            "type": "statement",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "enum",
     "named": true,
     "fields": {
@@ -719,25 +699,6 @@
   {
     "type": "if",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "else_branch",
-          "named": true
-        },
-        {
-          "type": "if_branch",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "if_branch",
-    "named": true,
     "fields": {
       "action": {
         "multiple": true,
@@ -753,12 +714,56 @@
           }
         ]
       },
+      "branch": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "do",
+            "named": false
+          },
+          {
+            "type": "else",
+            "named": false
+          },
+          {
+            "type": "if",
+            "named": false
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "else": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": "else",
+            "named": false
+          },
+          {
+            "type": "statement",
             "named": true
           }
         ]
@@ -1372,11 +1377,11 @@
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "loop",
