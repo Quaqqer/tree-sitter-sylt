@@ -27,7 +27,7 @@ module.exports = grammar({
 
   extras: $ => [$.comment, /\s/],
 
-  supertypes: $ => [$.type, $.expression, $.statement],
+  supertypes: $ => [$.expression, $.statement],
 
   rules: {
     source_file: $ => repeat(seq($.statement, terminator)),
@@ -37,6 +37,8 @@ module.exports = grammar({
     generic: $ => /\*[A-Za-z_][A-Za-z0-9_]*/,
     filename: $ => /\/?([A-Za-z\d]+\/)*[A-Za-z\d]+/,
     comment: $ => seq("//", /[^\r\n]*/),
+
+    this: $ => "this",
 
     /// Types
     t_primitive: $ => choice("void", "bool", "int", "float", "str"),
@@ -299,6 +301,7 @@ module.exports = grammar({
 
     expression: $ =>
       choice(
+        $.this,
         $.identifier,
         $.int,
         $.float,
