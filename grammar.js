@@ -42,7 +42,7 @@ module.exports = grammar({
     t_primitive: $ => choice("void", "bool", "int", "float", "str"),
     t_any: $ => "*",
     t_tup: $ => seq("(", repeat_separator($.type, ",", true), ")"),
-    t_list: $ => seq("[", repeat_separator($.type, ",", true), "]"),
+    t_list: $ => seq("[", $.type, "]"),
     t_fn: $ =>
       seq(
         choice("fn", "pu"),
