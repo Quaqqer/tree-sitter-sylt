@@ -149,27 +149,25 @@ module.exports = grammar({
     arrow_call: $ =>
       seq(field("param1", $.expression), "->", field("call", $.call)),
 
-    if: $ =>
+    if_branch: $ =>
       seq(
         "if",
         field("condition", $.expression),
         "do",
-        field(
-          "if_body",
-          alias(optional(repeat(seq($.expression, terminator))), "if_body")
-        ),
-        field(
-          "else_body",
-          alias(
-            optional(
-              seq(
-                "else",
-                choice($.if, seq("do", repeat(seq($.expression, terminator))))
-              )
-            ),
-            "else_body"
-          )
-        ),
+        field("action", repeat_separator($.statement, terminator, true))
+      ),
+
+    else_branch: $ =>
+      seq(
+        "else",
+        field("action", repeat_separator($.statement, terminator, true))
+      ),
+
+    if: $ =>
+      seq(
+        $.if_branch,
+        repeat(seq("else", $.if_branch)),
+        optional($.else_branch),
         "end"
       ),
 

@@ -92,6 +92,10 @@
         "named": true
       },
       {
+        "type": "this",
+        "named": true
+      },
+      {
         "type": "tuple",
         "named": true
       },
@@ -143,40 +147,6 @@
       },
       {
         "type": "use",
-        "named": true
-      }
-    ]
-  },
-  {
-    "type": "type",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "t_any",
-        "named": true
-      },
-      {
-        "type": "t_blob",
-        "named": true
-      },
-      {
-        "type": "t_fn",
-        "named": true
-      },
-      {
-        "type": "t_generic",
-        "named": true
-      },
-      {
-        "type": "t_list",
-        "named": true
-      },
-      {
-        "type": "t_primitive",
-        "named": true
-      },
-      {
-        "type": "t_tup",
         "named": true
       }
     ]
@@ -644,6 +614,34 @@
           "named": true
         },
         {
+          "type": "t_any",
+          "named": true
+        },
+        {
+          "type": "t_blob",
+          "named": true
+        },
+        {
+          "type": "t_fn",
+          "named": true
+        },
+        {
+          "type": "t_generic",
+          "named": true
+        },
+        {
+          "type": "t_list",
+          "named": true
+        },
+        {
+          "type": "t_primitive",
+          "named": true
+        },
+        {
+          "type": "t_tup",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -813,10 +811,6 @@
             "named": false
           },
           {
-            "type": "do",
-            "named": false
-          },
-          {
             "type": "statement",
             "named": true
           }
@@ -870,6 +864,34 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "t_any",
+          "named": true
+        },
+        {
+          "type": "t_blob",
+          "named": true
+        },
+        {
+          "type": "t_fn",
+          "named": true
+        },
+        {
+          "type": "t_generic",
+          "named": true
+        },
+        {
+          "type": "t_list",
+          "named": true
+        },
+        {
+          "type": "t_primitive",
+          "named": true
+        },
+        {
+          "type": "t_tup",
           "named": true
         },
         {
@@ -1043,6 +1065,45 @@
     "fields": {}
   },
   {
+    "type": "type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "t_any",
+          "named": true
+        },
+        {
+          "type": "t_blob",
+          "named": true
+        },
+        {
+          "type": "t_fn",
+          "named": true
+        },
+        {
+          "type": "t_generic",
+          "named": true
+        },
+        {
+          "type": "t_list",
+          "named": true
+        },
+        {
+          "type": "t_primitive",
+          "named": true
+        },
+        {
+          "type": "t_tup",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {},
@@ -1108,6 +1169,34 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "t_any",
+          "named": true
+        },
+        {
+          "type": "t_blob",
+          "named": true
+        },
+        {
+          "type": "t_fn",
+          "named": true
+        },
+        {
+          "type": "t_generic",
+          "named": true
+        },
+        {
+          "type": "t_list",
+          "named": true
+        },
+        {
+          "type": "t_primitive",
+          "named": true
+        },
+        {
+          "type": "t_tup",
           "named": true
         }
       ]
@@ -1246,6 +1335,10 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "else_body",
     "named": false
   },
@@ -1311,11 +1404,11 @@
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "loop",
@@ -1351,6 +1444,10 @@
   },
   {
     "type": "str",
+    "named": true
+  },
+  {
+    "type": "this",
     "named": true
   },
   {
