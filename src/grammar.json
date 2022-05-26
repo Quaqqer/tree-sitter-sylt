@@ -201,34 +201,8 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "SEQ",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "identifier"
-                            },
-                            {
-                              "type": "CHOICE",
-                              "members": [
-                                {
-                                  "type": "SEQ",
-                                  "members": [
-                                    {
-                                      "type": "STRING",
-                                      "value": ":"
-                                    },
-                                    {
-                                      "type": "SYMBOL",
-                                      "name": "type"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BLANK"
-                                }
-                              ]
-                            }
-                          ]
+                          "type": "SYMBOL",
+                          "name": "type"
                         },
                         {
                           "type": "STRING",
@@ -238,34 +212,8 @@
                     }
                   },
                   {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "identifier"
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "SEQ",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": ":"
-                              },
-                              {
-                                "type": "SYMBOL",
-                                "name": "type"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "BLANK"
-                          }
-                        ]
-                      }
-                    ]
+                    "type": "SYMBOL",
+                    "name": "type"
                   }
                 ]
               },
@@ -2328,61 +2276,61 @@
     [
       {
         "type": "SYMBOL",
-        "name": "enum_construct"
+        "name": "expression"
       },
       {
         "type": "SYMBOL",
-        "name": "expression"
+        "name": "enum_construct"
       }
     ],
     [
-      {
-        "type": "SYMBOL",
-        "name": "enum_construct"
-      },
       {
         "type": "SYMBOL",
         "name": "binary_expression"
-      }
-    ],
-    [
+      },
       {
         "type": "SYMBOL",
         "name": "enum_construct"
-      },
+      }
+    ],
+    [
       {
         "type": "SYMBOL",
         "name": "call"
-      }
-    ],
-    [
+      },
       {
         "type": "SYMBOL",
         "name": "enum_construct"
-      },
+      }
+    ],
+    [
       {
         "type": "SYMBOL",
         "name": "arrow_call"
-      }
-    ],
-    [
+      },
       {
         "type": "SYMBOL",
         "name": "enum_construct"
-      },
+      }
+    ],
+    [
       {
         "type": "SYMBOL",
         "name": "prim_call"
+      },
+      {
+        "type": "SYMBOL",
+        "name": "enum_construct"
       }
     ],
     [
       {
         "type": "SYMBOL",
-        "name": "enum_construct"
+        "name": "member"
       },
       {
         "type": "SYMBOL",
-        "name": "member"
+        "name": "enum_construct"
       }
     ],
     [

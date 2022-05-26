@@ -46,15 +46,7 @@ module.exports = grammar({
     t_fn: $ =>
       seq(
         choice("fn", "pu"),
-        optional(
-          alias(
-            repeat_separator(
-              seq($.identifier, optional(seq(":", $.type))),
-              ","
-            ),
-            "parameter_list"
-          )
-        ),
+        optional(alias(repeat_separator($.type, ","), "parameter_list")),
         "->",
         $.type
       ),
