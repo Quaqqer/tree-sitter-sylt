@@ -308,6 +308,21 @@
     }
   },
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "bool",
     "named": true,
     "fields": {}
@@ -462,7 +477,22 @@
   {
     "type": "declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "mutability": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "immutable",
+            "named": false
+          },
+          {
+            "type": "mutable",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -700,27 +730,13 @@
     "type": "if",
     "named": true,
     "fields": {
-      "action": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "\n",
-            "named": false
-          },
-          {
-            "type": "statement",
-            "named": true
-          }
-        ]
-      },
       "branch": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "\n",
-            "named": false
+            "type": "block",
+            "named": true
           },
           {
             "type": "do",
@@ -731,12 +747,12 @@
             "named": false
           },
           {
-            "type": "if",
-            "named": false
+            "type": "expression",
+            "named": true
           },
           {
-            "type": "statement",
-            "named": true
+            "type": "if",
+            "named": false
           }
         ]
       },
@@ -755,16 +771,12 @@
         "required": false,
         "types": [
           {
-            "type": "\n",
-            "named": false
+            "type": "block",
+            "named": true
           },
           {
             "type": "else",
             "named": false
-          },
-          {
-            "type": "statement",
-            "named": true
           }
         ]
       }
@@ -779,20 +791,6 @@
     "type": "loop",
     "named": true,
     "fields": {
-      "action": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "\n",
-            "named": false
-          },
-          {
-            "type": "statement",
-            "named": true
-          }
-        ]
-      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -803,6 +801,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -940,11 +948,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
-          "type": "statement",
+          "type": "block",
           "named": true
         }
       ]
@@ -1376,7 +1384,7 @@
     "named": false
   },
   {
-    "type": "int",
+    "type": "immutable",
     "named": false
   },
   {
@@ -1384,7 +1392,15 @@
     "named": true
   },
   {
+    "type": "int",
+    "named": false
+  },
+  {
     "type": "loop",
+    "named": false
+  },
+  {
+    "type": "mutable",
     "named": false
   },
   {

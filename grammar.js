@@ -1,36 +1,37 @@
 const repeat_separator = (elem, separator, trailing) =>
   seq(
-    repeat(seq(elem, separator)),
     elem,
+    repeat(seq(separator, elem)),
     ...(trailing ? [optional(separator)] : [])
   );
+
+const PREC = {
+  assert_eq: 1,
+  or: 2,
+  and: 3,
+  compare: 4,
+  term: 5,
+  factor: 6,
+  unary: 7,
+  index: 8,
+  arrow: 9,
+  enum_construct: 10,
+  case_branch: 10,
+};
 
 const terminator = "\n";
 
 module.exports = grammar({
   name: "sylt",
 
-  precedences: $ => [
-    ["unary", "mulDiv", "addSub", "compare", "and", "or"],
-
-    [$.expression, $.arrow_call],
-
-    [$.expression, $.enum_construct],
-    [$.binary_expression, $.enum_construct],
-    [$.call, $.enum_construct],
-    [$.arrow_call, $.enum_construct],
-    [$.prim_call, $.enum_construct],
-    [$.member, $.enum_construct],
-
-    [$.case_branch, $.expression],
-  ],
-
   extras: $ => [$.comment, /\s/],
 
   supertypes: $ => [$.expression, $.statement],
 
   rules: {
-    source_file: $ => repeat(seq($.statement, terminator)),
+    source_file: $ => $.block,
+
+    block: $ => repeat_separator($.statement, terminator, true),
 
     // General stuff
     identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
@@ -79,25 +80,25 @@ module.exports = grammar({
     binary_expression: $ =>
       choice(
         ...[
-          ["+", "addSub"],
-          ["-", "addSub"],
-          ["*", "mulDiv"],
-          ["/", "mulDiv"],
-          ["<", "compare"],
-          ["<=", "compare"],
-          [">", "compare"],
-          [">=", "compare"],
-          ["==", "compare"],
-          ["!=", "compare"],
-          ["and", "and"],
-          ["or", "or"],
+          ["+", PREC.term],
+          ["-", PREC.term],
+          ["*", PREC.factor],
+          ["/", PREC.factor],
+          ["<", PREC.compare],
+          ["<=", PREC.compare],
+          [">", PREC.compare],
+          [">=", PREC.compare],
+          ["==", PREC.compare],
+          ["!=", PREC.compare],
+          ["and", PREC.and],
+          ["or", PREC.or],
         ].map(([op, precedence]) =>
           prec.left(precedence, seq($.expression, op, $.expression))
         )
       ),
 
     unary_expression: $ =>
-      prec.left("unary", seq(choice("not", "+", "-"), $.expression)),
+      prec.left(PREC.unary, seq(choice("not", "+", "-"), $.expression)),
 
     function: $ =>
       seq(
@@ -123,18 +124,24 @@ module.exports = grammar({
       ),
 
     call: $ =>
-      seq(
-        field("function", $.expression),
-        "(",
-        field(
-          "parameters",
-          alias(optional(repeat_separator($.expression, ",")), "parameter_list")
-        ),
-        ")"
+      prec(
+        PREC.index,
+        seq(
+          field("function", $.expression),
+          "(",
+          field(
+            "parameters",
+            alias(
+              optional(repeat_separator($.expression, ",")),
+              "parameter_list"
+            )
+          ),
+          ")"
+        )
       ),
     prim_call: $ =>
-      // This is wrong
-      prec.left(
+      prec.right(
+        PREC.arrow,
         seq(
           $.expression,
           "'",
@@ -147,27 +154,14 @@ module.exports = grammar({
         )
       ),
     arrow_call: $ =>
-      seq(field("param1", $.expression), "->", field("call", $.call)),
-
-    _if_branch: $ =>
-      seq(
-        "if",
-        field("condition", $.expression),
-        "do",
-        field(
-          "action",
-          optional(repeat_separator($.statement, terminator, true))
-        )
+      prec(
+        PREC.arrow,
+        seq(field("param1", $.expression), "->", field("call", $.call))
       ),
 
-    _else_branch: $ =>
-      seq(
-        "else",
-        field(
-          "action",
-          optional(repeat_separator($.statement, terminator, true))
-        )
-      ),
+    _if_branch: $ => seq("if", field("condition", $.expression), "do", $.block),
+
+    _else_branch: $ => seq("else", $.block),
 
     if: $ =>
       seq(
@@ -178,15 +172,18 @@ module.exports = grammar({
       ),
 
     case_branch: $ =>
-      seq(
-        field("variant", choice($.identifier, $.member)),
-        field("bind", optional($.identifier)),
-        "->",
-        field(
-          "body",
-          alias(repeat(seq($.statement, terminator)), "branch_body")
-        ),
-        "end"
+      prec(
+        PREC.case_branch,
+        seq(
+          field("variant", choice($.identifier, $.member)),
+          field("bind", optional($.identifier)),
+          "->",
+          field(
+            "body",
+            alias(repeat(seq($.statement, terminator)), "branch_body")
+          ),
+          "end"
+        )
       ),
 
     case: $ =>
@@ -215,13 +212,7 @@ module.exports = grammar({
       ),
     // TODO: Single statement loop true do stmt end == loop true stmt
     loop: $ =>
-      seq(
-        "loop",
-        field("condition", $.expression),
-        "do",
-        field("action", repeat_separator($.statement, terminator, true)),
-        "end"
-      ),
+      seq("loop", field("condition", $.expression), "do", $.block, "end"),
 
     list: $ =>
       seq("[", alias(repeat_separator($.expression, ",", true), "values"), "]"),
@@ -296,10 +287,14 @@ module.exports = grammar({
         "end"
       ),
     enum_construct: $ =>
-      seq(field("variant", $.member), field("value", $.expression)),
+      prec(
+        PREC.enum_construct,
+        seq(field("variant", $.member), field("value", $.expression))
+      ),
 
     // General member
-    member: $ => seq($.expression, ".", field("member", $.identifier)),
+    member: $ =>
+      prec(PREC.index, seq($.expression, ".", field("member", $.identifier))),
 
     external: $ => seq("external", $.str),
 
@@ -347,7 +342,16 @@ module.exports = grammar({
       ),
 
     declaration: $ =>
-      seq($.identifier, ":", optional($.type), choice(":", "="), $.expression),
+      seq(
+        $.identifier,
+        ":",
+        optional($.type),
+        field(
+          "mutability",
+          choice(alias(":", "immutable"), alias("=", "mutable"))
+        ),
+        $.expression
+      ),
 
     assignment: $ => seq(choice($.identifier, $.member), "=", $.expression),
     augmented_assignment: $ =>
@@ -360,7 +364,8 @@ module.exports = grammar({
     ret: $ => seq("ret", field("value", $.expression)),
     break: $ => "break",
 
-    assert_eq: $ => seq($.expression, "<=>", $.expression),
+    assert_eq: $ =>
+      prec(PREC.assert_eq, seq($.expression, "<=>", $.expression)),
     unreachable: $ => "<!>",
 
     statement: $ =>
