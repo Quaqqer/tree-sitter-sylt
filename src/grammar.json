@@ -1033,8 +1033,17 @@
           "type": "FIELD",
           "name": "variant",
           "content": {
-            "type": "SYMBOL",
-            "name": "member"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "member"
+              }
+            ]
           }
         },
         {

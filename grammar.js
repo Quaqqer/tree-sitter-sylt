@@ -173,7 +173,7 @@ module.exports = grammar({
 
     case_branch: $ =>
       seq(
-        field("variant", $.member),
+        field("variant", choice($.identifier, $.member)),
         field("bind", optional($.identifier)),
         "->",
         field(
