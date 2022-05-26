@@ -251,6 +251,20 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -580,53 +594,6 @@
       "types": [
         {
           "type": "str",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "fields",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "t_any",
-          "named": true
-        },
-        {
-          "type": "t_blob",
-          "named": true
-        },
-        {
-          "type": "t_fn",
-          "named": true
-        },
-        {
-          "type": "t_generic",
-          "named": true
-        },
-        {
-          "type": "t_list",
-          "named": true
-        },
-        {
-          "type": "t_primitive",
-          "named": true
-        },
-        {
-          "type": "t_tup",
-          "named": true
-        },
-        {
-          "type": "type",
           "named": true
         }
       ]
@@ -1348,10 +1315,6 @@
     "named": false
   },
   {
-    "type": "fields",
-    "named": false
-  },
-  {
     "type": "filename",
     "named": true
   },
@@ -1389,11 +1352,11 @@
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "loop",

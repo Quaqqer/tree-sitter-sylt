@@ -13,10 +13,11 @@ const PREC = {
   term: 5,
   factor: 6,
   unary: 7,
-  index: 8,
-  arrow: 9,
+  arrow: 8,
+  member: 9,
   enum_construct: 10,
   case_branch: 10,
+  call: 11,
 };
 
 const terminator = "\n";
@@ -125,7 +126,7 @@ module.exports = grammar({
 
     call: $ =>
       prec(
-        PREC.index,
+        PREC.call,
         seq(
           field("function", $.expression),
           "(",
@@ -237,10 +238,7 @@ module.exports = grammar({
           optional(alias(repeat_separator($.generic, ","), "generic_list"))
         ),
         "{",
-        alias(
-          optional(repeat_separator(seq($.identifier, ":", $.type), ",", true)),
-          "fields"
-        ),
+        optional(repeat_separator(seq($.identifier, ":", $.type), ",", true)),
         "}"
       ),
     blob_construct: $ =>
@@ -294,7 +292,7 @@ module.exports = grammar({
 
     // General member
     member: $ =>
-      prec(PREC.index, seq($.expression, ".", field("member", $.identifier))),
+      prec(PREC.member, seq($.expression, ".", field("member", $.identifier))),
 
     external: $ => seq("external", $.str),
 
