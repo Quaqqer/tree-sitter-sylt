@@ -40,7 +40,8 @@ module.exports = grammar({
     block: $ => sep1($.statement, terminator, true),
 
     // General stuff
-    identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
+    variable: $ => /[a-z_][A-Za-z0-9_]*/,
+    variant: $ => /[A-Z][A-Za-z0-9_]*/,
     generic: $ => /\*[A-Za-z_][A-Za-z0-9_]*/,
     filename: $ => /\/?([A-Za-z\d]+\/)*[A-Za-z\d]+/,
     comment: $ => seq("//", /[^\r\n]*/),
@@ -60,7 +61,7 @@ module.exports = grammar({
         $.type
       ),
     t_generic: $ => $.generic,
-    t_blob: $ => seq(field("name", $.identifier)),
+    t_blob: $ => seq(field("name", $.variant)),
 
     type: $ =>
       choice(
@@ -112,7 +113,7 @@ module.exports = grammar({
         field(
           "parameters",
           alias(
-            sep(seq($.identifier, optional(seq(":", $.type))), ","),
+            sep(seq($.variable, optional(seq(":", $.type))), ","),
             "parameter_list"
           )
         ),
@@ -165,8 +166,8 @@ module.exports = grammar({
       prec(
         PREC.case_branch,
         seq(
-          field("variant", choice($.identifier, $.member)),
-          field("bind", optional($.identifier)),
+          field("variant", choice($.variant, $.variant_member)),
+          field("bind", optional($.variable)),
           "->",
           field(
             "body",
@@ -221,22 +222,18 @@ module.exports = grammar({
         "{",
         field(
           "fields",
-          alias(sep(seq($.identifier, ":", $.type), ",", true), "blob_fields")
+          alias(sep(seq($.variable, ":", $.type), ",", true), "blob_fields")
         ),
         "}"
       ),
     blob_construct: $ =>
       seq(
-        $.identifier,
+        $.variant,
         "{",
         field(
           "fields",
           sep(
-            seq(
-              field("field", $.identifier),
-              ":",
-              field("value", $.expression)
-            ),
+            seq(field("field", $.variable), ":", field("value", $.expression)),
             ",",
             true
           )
@@ -251,7 +248,7 @@ module.exports = grammar({
         field(
           "variants",
           alias(
-            sep(seq($.identifier, optional(field("type", $.type))), ",", true),
+            sep(seq($.variant, optional(field("type", $.type))), ",", true),
             "variant_list"
           )
         ),
@@ -260,19 +257,21 @@ module.exports = grammar({
     enum_construct: $ =>
       prec(
         PREC.enum_construct,
-        seq(field("variant", $.member), field("value", $.expression))
+        seq(field("variant", $.variant_member), field("value", $.expression))
       ),
 
     // General member
-    member: $ =>
-      prec(PREC.member, seq($.expression, ".", field("member", $.identifier))),
+    variable_member: $ =>
+      prec(PREC.member, seq($.expression, ".", field("member", $.variable))),
+    variant_member: $ =>
+      prec(PREC.member, seq($.expression, ".", field("member", $.variant))),
 
     external: $ => seq("external", $.str),
 
     expression: $ =>
       choice(
         $.this,
-        $.identifier,
+        $.variable,
         $.int,
         $.float,
         $.nil,
@@ -294,7 +293,7 @@ module.exports = grammar({
         $.blob_construct,
         $.enum,
         $.enum_construct,
-        $.member,
+        $.variable_member,
         $.external
       ),
 
@@ -306,12 +305,12 @@ module.exports = grammar({
         "from",
         $.filename,
         "use",
-        choice($.identifier, seq("(", sep($.identifier, ",", true), ")"))
+        choice($.variable, seq("(", sep($.variable, ",", true), ")"))
       ),
 
     declaration: $ =>
       seq(
-        $.identifier,
+        choice($.variable, $.variant),
         ":",
         optional($.type),
         field(
@@ -321,11 +320,12 @@ module.exports = grammar({
         $.expression
       ),
 
-    assignment: $ => seq(choice($.identifier, $.member), "=", $.expression),
+    assignment: $ =>
+      seq(choice($.variable, $.variant, $.variable_member, $.variant_member), "=", $.expression),
     augmented_assignment: $ =>
       choice(
         ...["+=", "-=", "*=", "/="].map(op =>
-          seq(choice($.identifier, $.member), op, $.expression)
+          seq(choice($.variable, $.variable_member), op, $.expression)
         )
       ),
 

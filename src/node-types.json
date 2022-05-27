@@ -52,10 +52,6 @@
         "named": true
       },
       {
-        "type": "identifier",
-        "named": true
-      },
-      {
         "type": "if",
         "named": true
       },
@@ -69,10 +65,6 @@
       },
       {
         "type": "loop",
-        "named": true
-      },
-      {
-        "type": "member",
         "named": true
       },
       {
@@ -101,6 +93,14 @@
       },
       {
         "type": "unary_expression",
+        "named": true
+      },
+      {
+        "type": "variable",
+        "named": true
+      },
+      {
+        "type": "variable_member",
         "named": true
       }
     ]
@@ -203,6 +203,14 @@
         {
           "type": "expression",
           "named": true
+        },
+        {
+          "type": "variant",
+          "named": true
+        },
+        {
+          "type": "variant_member",
+          "named": true
         }
       ]
     }
@@ -272,7 +280,7 @@
         "required": false,
         "types": [
           {
-            "type": "identifier",
+            "type": "variable",
             "named": true
           }
         ]
@@ -311,7 +319,7 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "variant",
           "named": true
         }
       ]
@@ -325,10 +333,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
         {
           "type": "t_any",
           "named": true
@@ -359,6 +363,10 @@
         },
         {
           "type": "type",
+          "named": true
+        },
+        {
+          "type": "variable",
           "named": true
         }
       ]
@@ -495,7 +503,7 @@
         "required": false,
         "types": [
           {
-            "type": "identifier",
+            "type": "variable",
             "named": true
           }
         ]
@@ -515,11 +523,11 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "variant",
             "named": true
           },
           {
-            "type": "member",
+            "type": "variant_member",
             "named": true
           }
         ]
@@ -560,6 +568,10 @@
         },
         {
           "type": "type",
+          "named": true
+        },
+        {
+          "type": "variant",
           "named": true
         }
       ]
@@ -632,7 +644,7 @@
         "required": true,
         "types": [
           {
-            "type": "member",
+            "type": "variant_member",
             "named": true
           }
         ]
@@ -672,7 +684,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "variable",
           "named": true
         }
       ]
@@ -836,32 +848,6 @@
     }
   },
   {
-    "type": "member",
-    "named": true,
-    "fields": {
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "parameter_list",
     "named": false,
     "fields": {},
@@ -994,7 +980,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "variant",
             "named": true
           }
         ]
@@ -1156,6 +1142,32 @@
     }
   },
   {
+    "type": "variable_member",
+    "named": true,
+    "fields": {
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "variant_list",
     "named": false,
     "fields": {
@@ -1174,10 +1186,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
         {
           "type": "t_any",
           "named": true
@@ -1204,6 +1212,36 @@
         },
         {
           "type": "t_tup",
+          "named": true
+        },
+        {
+          "type": "variant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variant_member",
+    "named": true,
+    "fields": {
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "variant",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -1398,10 +1436,6 @@
     "named": false
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
     "type": "if",
     "named": false
   },
@@ -1411,11 +1445,11 @@
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "loop",
@@ -1451,11 +1485,11 @@
   },
   {
     "type": "str",
-    "named": true
+    "named": false
   },
   {
     "type": "str",
-    "named": false
+    "named": true
   },
   {
     "type": "this",
@@ -1476,6 +1510,14 @@
   {
     "type": "values",
     "named": false
+  },
+  {
+    "type": "variable",
+    "named": true
+  },
+  {
+    "type": "variant",
+    "named": true
   },
   {
     "type": "variant_list",

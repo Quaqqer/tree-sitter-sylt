@@ -42,14 +42,15 @@
 
 (comment) @comment
 
-(identifier) @variable
+(variable) @variable
+(variant) @constructor
 
 (type
 [
   (t_primitive) 
   (t_any)
   (t_generic)
-  (t_blob name: (identifier) @type)
+  (t_blob name: (variant) @type)
 ] @type)
 
 [
@@ -74,7 +75,7 @@
 ] @keyword.function)
 
 (call function: (identifier) @function)
-(call function: (member member: (identifier) @method))
+(call function: (variable_member member: (identifier) @method))
 (prim_call
 [
   "'"
@@ -83,6 +84,8 @@
 [
   "->" 
 ] @operator)
+
+(member member: (variable) @property)
 
 (if
 [
