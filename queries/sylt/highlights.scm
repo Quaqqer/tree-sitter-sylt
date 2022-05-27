@@ -7,6 +7,7 @@
 [
   "from"
   "use"
+  "external"
 ] @keyword
 
 [
@@ -43,8 +44,13 @@
 
 (identifier) @variable
 
-(type) @type
-(t_blob name: (identifier) @type)
+(type
+[
+  (t_primitive) 
+  (t_any)
+  (t_generic)
+  (t_blob name: (identifier) @type)
+] @type)
 
 [
   (int)
@@ -68,6 +74,7 @@
 ] @keyword.function)
 
 (call function: (identifier) @function)
+(call function: (member member: (identifier) @method))
 (prim_call
 [
   "'"
@@ -102,3 +109,8 @@
 ] @repeat)
 
 (this) @variable.builtin
+
+(blob_construct) @constructor
+(enum_construct) @constructor
+
+(ERROR) @error
