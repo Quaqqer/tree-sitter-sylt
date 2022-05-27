@@ -74,7 +74,7 @@
   "end"
 ] @keyword.function)
 
-(call function: (identifier) @function)
+(call function: (variable) @function)
 (call function: (variable_member member: (identifier) @method))
 (prim_call
 [
