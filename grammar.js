@@ -20,7 +20,6 @@ const PREC = {
   unary: 7,
   arrow: 8,
   member: 9,
-  enum_construct: 10,
   case_branch: 10,
   call: 11,
 };
@@ -255,10 +254,7 @@ module.exports = grammar({
         "end"
       ),
     enum_construct: $ =>
-      prec(
-        PREC.enum_construct,
-        seq(field("variant", $.variant_member), field("value", $.expression))
-      ),
+      seq(field("variant", $.variant_member), field("value", $.expression)),
 
     // General member
     variable_member: $ =>
@@ -321,7 +317,11 @@ module.exports = grammar({
       ),
 
     assignment: $ =>
-      seq(choice($.variable, $.variant, $.variable_member, $.variant_member), "=", $.expression),
+      seq(
+        choice($.variable, $.variant, $.variable_member, $.variant_member),
+        "=",
+        $.expression
+      ),
     augmented_assignment: $ =>
       choice(
         ...["+=", "-=", "*=", "/="].map(op =>

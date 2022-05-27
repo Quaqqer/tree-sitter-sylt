@@ -43,7 +43,6 @@
 (comment) @comment
 
 (variable) @variable
-(variant) @constructor
 
 (type
 [
@@ -85,7 +84,8 @@
   "->" 
 ] @operator)
 
-(member member: (variable) @property)
+(variable_member member: (variable) @property)
+(variant_member member: (variant) @constructor)
 
 (if
 [
@@ -113,7 +113,7 @@
 
 (this) @variable.builtin
 
-(blob_construct) @constructor
-(enum_construct) @constructor
+(blob_construct (variant) @constructor)
+(enum_construct) (variant_member member: (variant) @constructor))
 
 (ERROR) @error
