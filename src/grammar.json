@@ -357,7 +357,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "[^`]"
+            "value": "[^`]*"
           },
           "named": true,
           "value": "lua_code"

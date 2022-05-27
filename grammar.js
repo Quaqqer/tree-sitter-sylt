@@ -74,7 +74,7 @@ module.exports = grammar({
     nil: $ => "nil",
     bool: $ => choice("true", "false"),
     str: $ => /"[^"]*"/,
-    lua: $ => seq("`", alias(/[^`]/, $.lua_code), "`"),
+    lua: $ => seq("`", alias(/[^`]*/, $.lua_code), "`"),
 
     parens: $ => seq("(", $.expression, ")"),
 
