@@ -73,7 +73,7 @@ module.exports = grammar({
     float: $ => choice(/\d+\.\d*/, /\d*\.\d+/, /\d+e(-|\+)?\d+/),
     nil: $ => "nil",
     bool: $ => choice("true", "false"),
-    str: $ => /"[^"]*"/,
+    str: $ => /"(?:[^"\\]|\\.)*"/,
     lua: $ => seq("`", alias(/[^`]*/, $.lua_code), "`"),
 
     parens: $ => seq("(", $.expression, ")"),
