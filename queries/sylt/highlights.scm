@@ -114,6 +114,6 @@
 (this) @variable.builtin
 
 (blob_construct (variant) @constructor)
-(enum_construct) (variant_member member: (variant) @constructor))
+(enum_construct) (variant_member member: (variant) @constructor)
 
 (ERROR) @error
