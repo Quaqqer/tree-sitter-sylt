@@ -346,6 +346,28 @@
       "type": "PATTERN",
       "value": "\"[^\"]*\""
     },
+    "lua": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "`"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^`]"
+          },
+          "named": true,
+          "value": "lua_code"
+        },
+        {
+          "type": "STRING",
+          "value": "`"
+        }
+      ]
+    },
     "parens": {
       "type": "SEQ",
       "members": [
@@ -1887,6 +1909,10 @@
         {
           "type": "SYMBOL",
           "name": "str"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lua"
         },
         {
           "type": "SYMBOL",

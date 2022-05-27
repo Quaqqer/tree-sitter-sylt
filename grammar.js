@@ -74,6 +74,7 @@ module.exports = grammar({
     nil: $ => "nil",
     bool: $ => choice("true", "false"),
     str: $ => /"[^"]*"/,
+    lua: $ => seq("`", alias(/[^`]/, $.lua_code), "`"),
 
     parens: $ => seq("(", $.expression, ")"),
 
@@ -235,6 +236,7 @@ module.exports = grammar({
         $.nil,
         $.bool,
         $.str,
+        $.lua,
         $.parens,
         $.binary_expression,
         $.unary_expression,
