@@ -86,7 +86,7 @@
   "->" 
 ] @operator)
 
-(variable_member member: (variable) @property)
+(variable_member member: (variable) @attribute)
 (variant_member member: (variant) @constructor)
 
 (if
