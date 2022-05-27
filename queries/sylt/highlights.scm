@@ -75,7 +75,7 @@
 ] @keyword.function)
 
 (call function: (variable) @function)
-(call function: (variable_member member: (identifier) @method))
+(call function: (variable_member member: (variable) @method))
 (prim_call
 [
   "'"
