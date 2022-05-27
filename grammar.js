@@ -192,7 +192,7 @@ module.exports = grammar({
       ),
     blob_construct: $ =>
       seq(
-        $.variant,
+        field("variant", $.variant),
         "{",
         field(
           "fields",

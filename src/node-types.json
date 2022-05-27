@@ -336,17 +336,17 @@
             "named": true
           }
         ]
+      },
+      "variant": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "variant",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "variant",
-          "named": true
-        }
-      ]
     }
   },
   {
