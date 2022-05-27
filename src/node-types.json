@@ -1411,11 +1411,11 @@
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "loop",
@@ -1451,11 +1451,11 @@
   },
   {
     "type": "str",
-    "named": false
+    "named": true
   },
   {
     "type": "str",
-    "named": true
+    "named": false
   },
   {
     "type": "this",

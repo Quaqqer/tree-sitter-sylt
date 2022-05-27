@@ -2,7 +2,7 @@ function sep1(rule, separator, trailing) {
   return seq(
     rule,
     repeat(seq(separator, rule)),
-    ...(trailing ? [separator] : [])
+    ...(trailing ? [optional(separator)] : [])
   );
 }
 
