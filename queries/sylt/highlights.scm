@@ -29,6 +29,8 @@
   ":"
   ","
   "."
+  (mutable)
+  (immutable)
 ] @punctuation.delimiter
 
 [
