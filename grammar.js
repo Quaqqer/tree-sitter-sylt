@@ -52,13 +52,7 @@ module.exports = grammar({
     t_any: $ => "*",
     t_tup: $ => seq("(", $.type, ",", sep($.type, ",", true), ")"),
     t_list: $ => seq("[", $.type, "]"),
-    t_fn: $ =>
-      seq(
-        choice("fn", "pu"),
-        alias(sep($.type, ","), "parameter_list"),
-        "->",
-        $.type
-      ),
+    t_fn: $ => seq(choice("fn", "pu"), sep($.type, ","), "->", $.type),
     t_generic: $ => $.generic,
     t_blob: $ => seq(field("name", $.variant)),
 
@@ -111,16 +105,10 @@ module.exports = grammar({
         choice("fn", "pu"),
         field(
           "parameters",
-          alias(
-            sep(seq($.variable, optional(seq(":", $.type))), ","),
-            "parameter_list"
-          )
+          sep(seq($.variable, optional(seq(":", $.type))), ",")
         ),
         choice(field("return", seq("->", $.type), optional("do")), "do"),
-        field(
-          "body",
-          alias(repeat(seq($.statement, terminator)), "function_body")
-        ),
+        field("body", repeat(seq($.statement, terminator))),
         "end"
       ),
 
@@ -130,18 +118,14 @@ module.exports = grammar({
         seq(
           field("function", $.expression),
           "(",
-          field("parameters", alias(sep($.expression, ","), "parameter_list")),
+          field("parameters", sep($.expression, ",")),
           ")"
         )
       ),
     prim_call: $ =>
       prec.right(
         PREC.arrow,
-        seq(
-          $.expression,
-          "'",
-          field("parameters", alias(sep($.expression, ","), "parameter_list"))
-        )
+        seq($.expression, "'", field("parameters", sep($.expression, ",")))
       ),
     arrow_call: $ =>
       prec(
@@ -168,10 +152,7 @@ module.exports = grammar({
           field("variant", choice($.variant, $.variant_member)),
           field("bind", optional($.variable)),
           "->",
-          field(
-            "body",
-            alias(repeat(seq($.statement, terminator)), "branch_body")
-          ),
+          field("body", repeat(seq($.statement, terminator))),
           "end"
         )
       ),
@@ -181,21 +162,15 @@ module.exports = grammar({
         "case",
         field("expression", $.expression),
         "do",
-        field("branches", alias(repeat($.case_branch), "branch_list")),
+        field("branches", repeat($.case_branch)),
         field(
           "else",
-          alias(
-            optional(
-              seq(
-                "else",
-                field(
-                  "body",
-                  alias(repeat(seq($.statement, terminator)), "branch_body")
-                ),
-                "end"
-              )
-            ),
-            "else_branch"
+          optional(
+            seq(
+              "else",
+              field("body", repeat(seq($.statement, terminator))),
+              "end"
+            )
           )
         ),
         "end"
@@ -204,25 +179,15 @@ module.exports = grammar({
     loop: $ =>
       seq("loop", field("condition", $.expression), "do", $.block, "end"),
 
-    list: $ => seq("[", alias(sep($.expression, ",", true), "values"), "]"),
+    list: $ => seq("[", sep($.expression, ",", true), "]"),
     tuple: $ =>
-      seq(
-        "(",
-        alias(seq($.expression, ",", sep($.expression, ",", true)), "values"),
-        ")"
-      ),
+      seq("(", seq($.expression, ",", sep($.expression, ",", true)), ")"),
     blob: $ =>
       seq(
         choice("blob", "externblob"),
-        field(
-          "generics",
-          alias(optional(seq("(", sep1($.generic, ","), ")")), "generic_list")
-        ),
+        field("generics", optional(seq("(", sep1($.generic, ","), ")"))),
         "{",
-        field(
-          "fields",
-          alias(sep(seq($.variable, ":", $.type), ",", true), "blob_fields")
-        ),
+        field("fields", sep(seq($.variable, ":", $.type), ",", true)),
         "}"
       ),
     blob_construct: $ =>
@@ -246,10 +211,7 @@ module.exports = grammar({
         field("generics", optional(seq("(", sep1($.generic, ","), ")"))),
         field(
           "variants",
-          alias(
-            sep(seq($.variant, optional(field("type", $.type))), ",", true),
-            "variant_list"
-          )
+          sep(seq($.variant, optional(field("type", $.type))), ",", true)
         ),
         "end"
       ),
@@ -311,7 +273,7 @@ module.exports = grammar({
         optional($.type),
         field(
           "mutability",
-          choice(alias(":", "immutable"), alias("=", "mutable"))
+          choice(alias(":", $.immutable), alias("=", $.mutable))
         ),
         $.expression
       ),

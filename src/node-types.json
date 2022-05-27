@@ -254,8 +254,20 @@
         "required": false,
         "types": [
           {
-            "type": "blob_fields",
+            "type": ",",
             "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
           }
         ]
       },
@@ -264,8 +276,20 @@
         "required": false,
         "types": [
           {
-            "type": "generic_list",
+            "type": "(",
             "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "generic",
+            "named": true
           }
         ]
       }
@@ -326,53 +350,6 @@
     }
   },
   {
-    "type": "blob_fields",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "t_any",
-          "named": true
-        },
-        {
-          "type": "t_blob",
-          "named": true
-        },
-        {
-          "type": "t_fn",
-          "named": true
-        },
-        {
-          "type": "t_generic",
-          "named": true
-        },
-        {
-          "type": "t_list",
-          "named": true
-        },
-        {
-          "type": "t_primitive",
-          "named": true
-        },
-        {
-          "type": "t_tup",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -393,36 +370,6 @@
     "fields": {}
   },
   {
-    "type": "branch_body",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "branch_list",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "case_branch",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "call",
     "named": true,
     "fields": {
@@ -441,8 +388,12 @@
         "required": false,
         "types": [
           {
-            "type": "parameter_list",
+            "type": ",",
             "named": false
+          },
+          {
+            "type": "expression",
+            "named": true
           }
         ]
       }
@@ -453,22 +404,26 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "branch_body",
+            "type": "\n",
             "named": false
+          },
+          {
+            "type": "statement",
+            "named": true
           }
         ]
       },
       "branches": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "branch_list",
-            "named": false
+            "type": "case_branch",
+            "named": true
           }
         ]
       },
@@ -477,7 +432,11 @@
         "required": false,
         "types": [
           {
-            "type": "else_branch",
+            "type": "else",
+            "named": false
+          },
+          {
+            "type": "end",
             "named": false
           }
         ]
@@ -509,12 +468,16 @@
         ]
       },
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "branch_body",
+            "type": "\n",
             "named": false
+          },
+          {
+            "type": "statement",
+            "named": true
           }
         ]
       },
@@ -549,11 +512,11 @@
         "types": [
           {
             "type": "immutable",
-            "named": false
+            "named": true
           },
           {
             "type": "mutable",
-            "named": false
+            "named": true
           }
         ]
       }
@@ -604,12 +567,12 @@
         ]
       },
       "type": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "variant_list",
-            "named": false
+            "type": "type",
+            "named": true
           }
         ]
       },
@@ -618,8 +581,16 @@
         "required": false,
         "types": [
           {
-            "type": "variant_list",
+            "type": ",",
             "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "variant",
+            "named": true
           }
         ]
       }
@@ -695,12 +666,16 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "function_body",
+            "type": "\n",
             "named": false
+          },
+          {
+            "type": "statement",
+            "named": true
           }
         ]
       },
@@ -709,8 +684,20 @@
         "required": false,
         "types": [
           {
-            "type": "parameter_list",
+            "type": ",",
             "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
           }
         ]
       },
@@ -728,36 +715,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "function_body",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "statement",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "generic_list",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "generic",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -819,7 +776,17 @@
   {
     "type": "list",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "loop",
@@ -842,53 +809,6 @@
       "types": [
         {
           "type": "block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "parameter_list",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "t_any",
-          "named": true
-        },
-        {
-          "type": "t_blob",
-          "named": true
-        },
-        {
-          "type": "t_fn",
-          "named": true
-        },
-        {
-          "type": "t_generic",
-          "named": true
-        },
-        {
-          "type": "t_list",
-          "named": true
-        },
-        {
-          "type": "t_primitive",
-          "named": true
-        },
-        {
-          "type": "t_tup",
-          "named": true
-        },
-        {
-          "type": "type",
           "named": true
         }
       ]
@@ -918,8 +838,12 @@
         "required": false,
         "types": [
           {
-            "type": "parameter_list",
+            "type": ",",
             "named": false
+          },
+          {
+            "type": "expression",
+            "named": true
           }
         ]
       }
@@ -992,7 +916,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1055,7 +979,17 @@
   {
     "type": "tuple",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "type",
@@ -1127,21 +1061,6 @@
     }
   },
   {
-    "type": "values",
-    "named": false,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "variable_member",
     "named": true,
     "fields": {
@@ -1162,60 +1081,6 @@
       "types": [
         {
           "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "variant_list",
-    "named": false,
-    "fields": {
-      "type": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "type",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "t_any",
-          "named": true
-        },
-        {
-          "type": "t_blob",
-          "named": true
-        },
-        {
-          "type": "t_fn",
-          "named": true
-        },
-        {
-          "type": "t_generic",
-          "named": true
-        },
-        {
-          "type": "t_list",
-          "named": true
-        },
-        {
-          "type": "t_primitive",
-          "named": true
-        },
-        {
-          "type": "t_tup",
-          "named": true
-        },
-        {
-          "type": "variant",
           "named": true
         }
       ]
@@ -1364,10 +1229,6 @@
     "named": false
   },
   {
-    "type": "blob_fields",
-    "named": false
-  },
-  {
     "type": "bool",
     "named": false
   },
@@ -1385,10 +1246,6 @@
   },
   {
     "type": "else",
-    "named": false
-  },
-  {
-    "type": "else_branch",
     "named": false
   },
   {
@@ -1432,16 +1289,12 @@
     "named": true
   },
   {
-    "type": "generic_list",
-    "named": false
-  },
-  {
     "type": "if",
     "named": false
   },
   {
     "type": "immutable",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
@@ -1457,7 +1310,7 @@
   },
   {
     "type": "mutable",
-    "named": false
+    "named": true
   },
   {
     "type": "nil",
@@ -1472,10 +1325,6 @@
     "named": false
   },
   {
-    "type": "parameter_list",
-    "named": false
-  },
-  {
     "type": "pu",
     "named": false
   },
@@ -1485,11 +1334,11 @@
   },
   {
     "type": "str",
-    "named": false
+    "named": true
   },
   {
     "type": "str",
-    "named": true
+    "named": false
   },
   {
     "type": "this",
@@ -1508,20 +1357,12 @@
     "named": false
   },
   {
-    "type": "values",
-    "named": false
-  },
-  {
     "type": "variable",
     "named": true
   },
   {
     "type": "variant",
     "named": true
-  },
-  {
-    "type": "variant_list",
-    "named": false
   },
   {
     "type": "void",
