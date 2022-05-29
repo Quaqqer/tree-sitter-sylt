@@ -156,6 +156,21 @@
     ]
   },
   {
+    "type": "_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "arrow_call",
     "named": true,
     "fields": {
@@ -903,7 +918,7 @@
       "required": false,
       "types": [
         {
-          "type": "block",
+          "type": "_block",
           "named": true
         }
       ]
@@ -1321,11 +1336,11 @@
   },
   {
     "type": "int",
-    "named": false
+    "named": true
   },
   {
     "type": "int",
-    "named": true
+    "named": false
   },
   {
     "type": "loop",

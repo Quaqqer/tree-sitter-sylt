@@ -5,8 +5,13 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "block"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block"
+          },
+          "named": true,
+          "value": "_block"
         },
         {
           "type": "BLANK"

@@ -34,7 +34,7 @@ module.exports = grammar({
   supertypes: $ => [$.expression, $.statement],
 
   rules: {
-    source_file: $ => optional($.block),
+    source_file: $ => optional(alias($.block, $._block)),
 
     block: $ => sep1($.statement, terminator, true),
 
