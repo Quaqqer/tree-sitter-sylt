@@ -1739,7 +1739,7 @@
                       "members": [
                         {
                           "type": "STRING",
-                          "value": ","
+                          "value": "\n"
                         },
                         {
                           "type": "SEQ",
@@ -1774,7 +1774,7 @@
                     "members": [
                       {
                         "type": "STRING",
-                        "value": ","
+                        "value": "\n"
                       },
                       {
                         "type": "BLANK"

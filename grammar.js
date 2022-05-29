@@ -212,7 +212,7 @@ module.exports = grammar({
         field("generics", optional(seq("(", sep1($.generic, ","), ")"))),
         field(
           "variants",
-          sep(seq($.variant, optional(field("type", $.type))), ",", true)
+          sep(seq($.variant, optional(field("type", $.type))), terminator, true)
         ),
         "end"
       ),

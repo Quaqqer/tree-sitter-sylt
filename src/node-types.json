@@ -585,7 +585,7 @@
         "required": false,
         "types": [
           {
-            "type": ",",
+            "type": "\n",
             "named": false
           },
           {
