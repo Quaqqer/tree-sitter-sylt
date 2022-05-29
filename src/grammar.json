@@ -2029,6 +2029,10 @@
               "name": "variable"
             },
             {
+              "type": "SYMBOL",
+              "name": "variant"
+            },
+            {
               "type": "SEQ",
               "members": [
                 {
@@ -2042,8 +2046,17 @@
                       "type": "SEQ",
                       "members": [
                         {
-                          "type": "SYMBOL",
-                          "name": "variable"
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "variable"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "variant"
+                            }
+                          ]
                         },
                         {
                           "type": "REPEAT",
@@ -2055,8 +2068,17 @@
                                 "value": ","
                               },
                               {
-                                "type": "SYMBOL",
-                                "name": "variable"
+                                "type": "CHOICE",
+                                "members": [
+                                  {
+                                    "type": "SYMBOL",
+                                    "name": "variable"
+                                  },
+                                  {
+                                    "type": "SYMBOL",
+                                    "name": "variant"
+                                  }
+                                ]
                               }
                             ]
                           }

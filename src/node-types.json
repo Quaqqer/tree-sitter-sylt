@@ -676,6 +676,10 @@
         {
           "type": "variable",
           "named": true
+        },
+        {
+          "type": "variant",
+          "named": true
         }
       ]
     }

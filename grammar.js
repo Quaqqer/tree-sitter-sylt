@@ -265,7 +265,7 @@ module.exports = grammar({
         "from",
         $.filename,
         "use",
-        choice($.variable, seq("(", sep($.variable, ",", true), ")"))
+        choice($.variable, $.variant, seq("(", sep(choice($.variable, $.variant), ",", true), ")"))
       ),
 
     declaration: $ =>
