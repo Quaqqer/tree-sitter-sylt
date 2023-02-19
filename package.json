@@ -1,0 +1,28 @@
+{
+  "name": "tree-sitter-sylt",
+  "version": "1.0.0",
+  "description": "A tree-sitter parser for sylt-lang",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quaqqer/tree-sitter-sylt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Quaqqer/tree-sitter-sylt/issues"
+  },
+  "homepage": "https://github.com/Quaqqer/tree-sitter-sylt#readme",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.7"
+  },
+  "main": "bindings/node",
+  "eslintConfig": {
+    "ignorePatterns": [
+      "**/*"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid"
+  }
+}
