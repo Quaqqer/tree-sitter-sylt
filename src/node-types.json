@@ -36,11 +36,11 @@
           "named": true
         },
         {
-          "type": "type",
+          "type": "pattern",
           "named": true
         },
         {
-          "type": "typeVar",
+          "type": "type",
           "named": true
         }
       ]
@@ -60,6 +60,10 @@
         },
         {
           "type": "typeName",
+          "named": true
+        },
+        {
+          "type": "typeVar",
           "named": true
         }
       ]
@@ -101,7 +105,22 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "typeName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enumPattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "pattern",
           "named": true
         },
         {
@@ -166,6 +185,10 @@
         {
           "type": "str",
           "named": true
+        },
+        {
+          "type": "unary",
+          "named": true
         }
       ]
     }
@@ -180,6 +203,25 @@
       "types": [
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "forall",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        },
+        {
+          "type": "typeVar",
           "named": true
         }
       ]
@@ -208,7 +250,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "pattern",
           "named": true
         }
       ]
@@ -227,7 +269,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "pattern",
           "named": true
         }
       ]
@@ -237,6 +279,49 @@
     "type": "lineComment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bool",
+          "named": true
+        },
+        {
+          "type": "enumPattern",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int",
+          "named": true
+        },
+        {
+          "type": "pattern",
+          "named": true
+        },
+        {
+          "type": "real",
+          "named": true
+        },
+        {
+          "type": "recordPattern",
+          "named": true
+        },
+        {
+          "type": "str",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "record",
@@ -252,6 +337,25 @@
         },
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "recordPattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "pattern",
           "named": true
         }
       ]
@@ -312,6 +416,10 @@
           "named": true
         },
         {
+          "type": "forall",
+          "named": true
+        },
+        {
           "type": "recordType",
           "named": true
         },
@@ -358,6 +466,21 @@
     "type": "typeVar",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "unary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "!=",
@@ -436,19 +559,7 @@
     "named": false
   },
   {
-    "type": "Bool",
-    "named": false
-  },
-  {
-    "type": "Int",
-    "named": false
-  },
-  {
-    "type": "Real",
-    "named": false
-  },
-  {
-    "type": "Str",
+    "type": "@",
     "named": false
   },
   {
@@ -497,6 +608,10 @@
   },
   {
     "type": "let",
+    "named": false
+  },
+  {
+    "type": "not",
     "named": false
   },
   {

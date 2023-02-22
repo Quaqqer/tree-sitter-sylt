@@ -19,7 +19,7 @@ module.exports = grammar({
     typeName: $ => alias($.properName, "_"),
     typeVar: $ => alias($.name, "_"),
 
-    int: $ => /-?[\d]+/,
+    int: $ => /-?\d+/,
     real: $ => /\d+\.\d*|\d*\.\d+|\d+e[-+]?\d+/,
 
     str: $ => /"([^"]|\\.)*"/,
@@ -27,7 +27,7 @@ module.exports = grammar({
 
     _literal: $ => choice($.int, $.real, $.str, $.bool),
 
-    enumCons: $ => seq($.identifier, ":", $.typeName, optional($.expression)),
+    enumCons: $ => prec.left(seq($.typeName, ":", $.typeName, optional($.expression))),
     record: $ =>
       seq("{", sepBy(seq($.identifier, ":", $.expression), ","), "}"),
 
@@ -55,9 +55,25 @@ module.exports = grammar({
         $._binPipe
       ),
 
-    lambda: $ => seq("\\", repeat($.identifier), "->", $.expression),
+    enumPattern: $ => prec.right(seq($.typeName, ":", $.typeName, optional($.pattern))),
+    recordPattern: $ =>
+      seq("{", sepBy(seq($.identifier, ":", $.pattern), ","), "}"),
 
-    letIn: $ => seq("let", $.identifier, "=", $.expression, "in", $.expression),
+    pattern: $ =>
+      choice(
+        "_",
+        seq($.identifier, optional(seq("@", $.pattern))),
+        $.enumPattern,
+        $.recordPattern,
+        $._literal
+      ),
+
+    unary: $ => seq(choice("not", "-"), $.expression),
+
+    lambda: $ => seq("\\", repeat($.pattern), "->", $.expression),
+
+    // let ... let ... let ... in expression
+    letIn: $ => seq("let", $.pattern, "=", $.expression, "in", $.expression),
 
     expression: $ =>
       choice(
@@ -69,25 +85,23 @@ module.exports = grammar({
         $.binExp,
         $.lambda,
         $.letIn,
+        $.unary,
         seq("(", $.expression, ")")
       ),
 
     recordType: $ => seq("{", sepBy(seq($.identifier, ":", $.type), ","), "}"),
     fnType: $ => prec.left(seq($.type, "->", $.type)),
     typeAlias: $ => seq($.typeName, repeat($.typeVar)),
+    forall: $ => prec.left(seq("forall", $.typeVar, ".", $.type)),
 
     type: $ =>
       choice(
-        "Int",
-        "Real",
-        "Bool",
-        "Str",
         "_",
-        "foreign",
         $.fnType,
         $.recordType,
         $.typeAlias,
         $.typeVar,
+        $.forall,
         seq("(", $.type, ")")
       ),
 
@@ -96,9 +110,9 @@ module.exports = grammar({
         "def",
         $.identifier,
         ":",
-        optional(seq(repeat(seq("forall", $.typeVar, ".")), $.type)),
+        optional($.type),
         ":",
-        repeat($.identifier),
+        repeat($.pattern),
         "=",
         $.expression
       ),
@@ -107,6 +121,7 @@ module.exports = grammar({
       seq(
         "enum",
         $.typeName,
+        repeat($.typeVar),
         "=",
         sepBy1(seq($.typeName, optional($.type)), "|")
       ),
