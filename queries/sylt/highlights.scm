@@ -1,16 +1,21 @@
 [
   "def"
   "enum"
-  "type"
   "foreign"
   "let"
   "in"
+] @keyword
+
+[
+  "forall"
+] @repeat
+
+[
+  "if"
   "match"
   "with"
-  "if"
   "end"
-  "forall"
-] @keyword
+] @conditional
 
 [
   "+"
@@ -38,7 +43,7 @@
 
 [
   ":"
-] @punctuation
+] @punctuation.delimiter
 
 [
   "and"
@@ -46,9 +51,13 @@
   "not"
 ] @keyword.operator
 
+[
+  "type"
+] @type.definition
+
 (comment) @comment
 (string) @string
-(number) @number
+(number) @float
 (identifier) @variable
 (field) @variable
 
