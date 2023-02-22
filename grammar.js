@@ -15,6 +15,7 @@ module.exports = grammar({
     properName: $ => /[A-Z][a-zA-Z0-9_]*/,
 
     identifier: $ => alias($.name, "_"),
+    field: $ => alias($.name, "_"),
 
     typeName: $ => alias($.properName, "_"),
     typeVar: $ => alias($.name, "_"),
@@ -29,11 +30,11 @@ module.exports = grammar({
 
     enumCons: $ => prec.left(seq($.typeName, ":", $.typeName, optional($.expression))),
     record: $ =>
-      seq("{", sepBy(seq($.identifier, ":", $.expression), ","), "}"),
+      seq("{", sepBy(seq($.field, ":", $.expression), ","), "}"),
 
     // Rewrite of /((?!]]-).)*/, since tree sitter does not support negative lookahead
     foreign: $ =>
-      seq("foreign", optional(seq("-[[", /([^\]]|\][^\]]|\]\][^-])*/, "]]-"))),
+      seq("foreign", optional(seq("-[[", alias(/([^\]]|\][^\]]|\]\][^-])*/, $.lua), "]]-"))),
 
     _binFac: $ => prec.left(7, binOp($.expression, choice("*", "/"))),
     _binTerm: $ => prec.left(6, binOp($.expression, choice("+", "-"))),
@@ -57,7 +58,7 @@ module.exports = grammar({
 
     enumPattern: $ => prec.right(seq($.typeName, ":", $.typeName, optional($.pattern))),
     recordPattern: $ =>
-      seq("{", sepBy(seq($.identifier, ":", $.pattern), ","), "}"),
+      seq("{", sepBy(seq($.field, ":", $.pattern), ","), "}"),
 
     pattern: $ =>
       choice(
@@ -89,7 +90,7 @@ module.exports = grammar({
         seq("(", $.expression, ")")
       ),
 
-    recordType: $ => seq("{", sepBy(seq($.identifier, ":", $.type), ","), "}"),
+    recordType: $ => seq("{", sepBy(seq($.field, ":", $.type), ","), "}"),
     fnType: $ => prec.left(seq($.type, "->", $.type)),
     typeAlias: $ => seq($.typeName, repeat($.typeVar)),
     forall: $ => prec.left(seq("forall", $.typeVar, ".", $.type)),

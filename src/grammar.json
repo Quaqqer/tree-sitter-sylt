@@ -38,6 +38,15 @@
       "named": false,
       "value": "_"
     },
+    "field": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "name"
+      },
+      "named": false,
+      "value": "_"
+    },
     "typeName": {
       "type": "ALIAS",
       "content": {
@@ -153,7 +162,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "identifier"
+                      "name": "field"
                     },
                     {
                       "type": "STRING",
@@ -179,7 +188,7 @@
                         "members": [
                           {
                             "type": "SYMBOL",
-                            "name": "identifier"
+                            "name": "field"
                           },
                           {
                             "type": "STRING",
@@ -225,8 +234,13 @@
                   "value": "-[["
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "([^\\]]|\\][^\\]]|\\]\\][^-])*"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "([^\\]]|\\][^\\]]|\\]\\][^-])*"
+                  },
+                  "named": true,
+                  "value": "lua"
                 },
                 {
                   "type": "STRING",
@@ -507,7 +521,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "identifier"
+                      "name": "field"
                     },
                     {
                       "type": "STRING",
@@ -533,7 +547,7 @@
                         "members": [
                           {
                             "type": "SYMBOL",
-                            "name": "identifier"
+                            "name": "field"
                           },
                           {
                             "type": "STRING",
@@ -763,7 +777,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "identifier"
+                      "name": "field"
                     },
                     {
                       "type": "STRING",
@@ -789,7 +803,7 @@
                         "members": [
                           {
                             "type": "SYMBOL",
-                            "name": "identifier"
+                            "name": "field"
                           },
                           {
                             "type": "STRING",

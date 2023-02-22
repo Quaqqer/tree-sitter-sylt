@@ -194,6 +194,11 @@
     }
   },
   {
+    "type": "field",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "fnType",
     "named": true,
     "fields": {},
@@ -230,7 +235,17 @@
   {
     "type": "foreign",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "lua",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "identifier",
@@ -336,7 +351,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         }
       ]
@@ -351,7 +366,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -370,7 +385,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "field",
           "named": true
         },
         {
@@ -609,6 +624,10 @@
   {
     "type": "let",
     "named": false
+  },
+  {
+    "type": "lua",
+    "named": true
   },
   {
     "type": "not",

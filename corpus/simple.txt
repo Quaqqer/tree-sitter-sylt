@@ -2,7 +2,7 @@
 Def
 ====
 
-def f : forall a. forall b. a : A:A B:B = 0
+def f ::= foreign -[[ asd ]]-
 
 ---
 
