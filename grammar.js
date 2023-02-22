@@ -28,13 +28,16 @@ module.exports = grammar({
 
     _literal: $ => choice($.int, $.real, $.str, $.bool),
 
-    enumCons: $ => prec.left(seq($.typeName, ":", $.typeName, optional($.expression))),
-    record: $ =>
-      seq("{", sepBy(seq($.field, ":", $.expression), ","), "}"),
+    enumCons: $ =>
+      prec.left(seq($.typeName, ":", $.typeName, optional($.expression))),
+    record: $ => seq("{", sepBy(seq($.field, ":", $.expression), ","), "}"),
 
     // Rewrite of /((?!]]-).)*/, since tree sitter does not support negative lookahead
     foreign: $ =>
-      seq("foreign", optional(seq("-[[", alias(/([^\]]|\][^\]]|\]\][^-])*/, $.lua), "]]-"))),
+      seq(
+        "foreign",
+        optional(seq("-[[", alias(/([^\]]|\][^\]]|\]\][^-])*/, $.lua), "]]-"))
+      ),
 
     _binFac: $ => prec.left(7, binOp($.expression, choice("*", "/"))),
     _binTerm: $ => prec.left(6, binOp($.expression, choice("+", "-"))),
@@ -56,9 +59,9 @@ module.exports = grammar({
         $._binPipe
       ),
 
-    enumPattern: $ => prec.right(seq($.typeName, ":", $.typeName, optional($.pattern))),
-    recordPattern: $ =>
-      seq("{", sepBy(seq($.field, ":", $.pattern), ","), "}"),
+    enumPattern: $ =>
+      prec.right(seq($.typeName, ":", $.typeName, optional($.pattern))),
+    recordPattern: $ => seq("{", sepBy(seq($.field, ":", $.pattern), ","), "}"),
 
     pattern: $ =>
       choice(
@@ -75,6 +78,14 @@ module.exports = grammar({
 
     // let ... let ... let ... in expression
     letIn: $ => seq("let", $.pattern, "=", $.expression, "in", $.expression),
+
+    match: $ =>
+      seq(
+        "match",
+        $.expression,
+        repeat(seq("with", $.pattern, "->", $.expression)),
+        "end"
+      ),
 
     expression: $ =>
       choice(

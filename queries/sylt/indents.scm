@@ -6,6 +6,6 @@
   "end"
 ] @indent_end
 
-(comment) @auto
+(lineComment) @auto
 
-(string) @auto
+(str) @auto

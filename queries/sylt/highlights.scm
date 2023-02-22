@@ -11,7 +11,6 @@
 ] @repeat
 
 [
-  "if"
   "match"
   "with"
   "end"
@@ -55,9 +54,11 @@
   "type"
 ] @type.definition
 
-(comment) @comment
-(string) @string
-(number) @float
+(lineComment) @comment
+(str) @string
+(int) @number
+(real) @float
+
 (identifier) @variable
 (field) @variable
 

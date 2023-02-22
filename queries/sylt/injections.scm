@@ -1,2 +1,2 @@
-(comment) @comment
+(lineComment) @comment
 (lua) @lua

@@ -598,6 +598,10 @@
     "named": false
   },
   {
+    "type": "end",
+    "named": false
+  },
+  {
     "type": "enum",
     "named": false
   },
@@ -630,6 +634,10 @@
     "named": true
   },
   {
+    "type": "match",
+    "named": false
+  },
+  {
     "type": "not",
     "named": false
   },
@@ -651,6 +659,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "with",
     "named": false
   },
   {
