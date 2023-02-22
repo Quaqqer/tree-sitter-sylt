@@ -27,6 +27,10 @@
   "<="
   "=="
   "!="
+  "->"
+  "@"
+  "\\"
+  ":"
 ] @operator
 
 [
@@ -34,15 +38,9 @@
   ")"
   "{"
   "}"
+  "-[["
+  "]]-"
 ] @punctuation.bracket
-
-[
-  "@"
-] @punctuation.special
-
-[
-  ":"
-] @punctuation.delimiter
 
 [
   "and"
@@ -65,3 +63,7 @@
 (type) @type
 
 (ERROR) @error
+
+;; Spell checking
+(str) @spell
+(lineComment) @spell
